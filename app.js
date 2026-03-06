@@ -7,7 +7,7 @@
 const config = {
   githubOwner: "skydreamer0",
   githubRepo: "novel_ark-micro-civ", // default, will try to infer
-  githubBranch: "master",
+  githubBranch: "main",
   includeExtensions: [".md"],
 };
 
