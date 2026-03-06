@@ -121,7 +121,7 @@
 - [x] 完善主角前期能力模組（見 `docs/plans/2026-03-06-volume-1-plan.md`）
 - [x] 建立主要反派層級（見 `docs/plans/2026-03-06-volume-1-plan.md`）
 - [x] 規劃重要配角與勢力（見 `docs/plans/2026-03-06-volume-1-plan.md`）
-- [ ] 定義每卷的升級與揭密節奏
+- [x] 定義每卷的升級與揭密節奏（見 `docs/plans/2026-03-06-series-arc-progression.md`）
 
 ---
 
