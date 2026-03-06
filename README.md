@@ -122,6 +122,7 @@
 - [x] 建立主要反派層級（見 `docs/plans/2026-03-06-volume-1-plan.md`）
 - [x] 規劃重要配角與勢力（見 `docs/plans/2026-03-06-volume-1-plan.md`）
 - [x] 定義每卷的升級與揭密節奏（見 `docs/plans/2026-03-06-series-arc-progression.md`）
+- [x] 將世界觀補齊並整理到獨立資料夾（見 `docs/world/`）
 
 ---
 
