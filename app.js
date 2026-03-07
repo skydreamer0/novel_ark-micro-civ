@@ -325,7 +325,7 @@ async function loadFileList() {
     const data = await resp.json();
 
     state.files = data.tree
-      .filter(item => item.type === "blob" && item.path.endsWith(".md") && (item.path.includes("docs/chapters") || item.path.includes("章稿")))
+      .filter(item => item.type === "blob" && item.path.endsWith(".md") && (item.path.includes("docs/01_正文") || item.path.includes("章稿")))
       .map(item => ({
         path: item.path,
         title: item.path.split("/").pop().replace(".md", ""), // Fallback title
