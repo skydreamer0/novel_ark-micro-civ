@@ -518,7 +518,8 @@ async function loadChapter(path) {
 
     // Update header
     els.chapterTitle.textContent = title;
-    document.title = `${title} - 末日母艦：我的體內有個微縮文明`;
+    const chapName = state.files[index].path.split('/').pop().replace('.md', '');
+    document.title = `${chapName} - 末日母艦`;
     updateWordCount(text);
 
     // Scroll
@@ -712,7 +713,8 @@ function updateVisibleChapterTitle() {
   if (!isNaN(idx) && idx !== state.activeIndex) {
     state.activeIndex = idx;
     els.chapterTitle.textContent = state.files[idx].title;
-    document.title = `${state.files[idx].title} - 末日母艦：我的體內有個微縮文明`;
+    const chapName = state.files[idx].path.split('/').pop().replace('.md', '');
+    document.title = `${chapName} - 末日母艦`;
     updateBookmarkUI();
     updateActiveSidebarItem();
 
