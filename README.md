@@ -1,5 +1,9 @@
 # 末日母艦：我的體內有個微縮文明
 
+<p align="center">
+  <img src="assets/cover.png" alt="末日母艦：我的體內有個微縮文明 封面" width="600" />
+</p>
+
 > *Mothership: Inner Micro-Civilization*
 
 [![Genre](https://img.shields.io/badge/賽博龐克-外域生存-orange?style=for-the-badge)](#) [![Genre](https://img.shields.io/badge/文明養成-陰謀揭露-blueviolet?style=for-the-badge)](#) [![Status](https://img.shields.io/badge/連載中-Vol.1-blue?style=for-the-badge)](#)
@@ -52,5 +56,5 @@
 |:---|:---|
 | 🌐 世界觀 | [母艦與都市結構](docs/03_%E4%B8%96%E7%95%8C%E8%A7%80/01_%E6%AF%8D%E8%89%A6%E8%88%87%E9%83%BD%E5%B8%82%E7%B5%90%E6%A7%8B.md) · [場景與生態危機](docs/03_%E4%B8%96%E7%95%8C%E8%A7%80/02_%E5%A0%B4%E6%99%AF%E8%88%87%E7%94%9F%E6%85%8B%E5%8D%B1%E6%A9%9F.md) · [資源與轉化規則](docs/03_%E4%B8%96%E7%95%8C%E8%A7%80/03_%E8%B3%87%E6%BA%90%E8%88%87%E8%BD%89%E5%8C%96%E8%A6%8F%E5%89%87.md) · [社會秩序與壓迫](docs/03_%E4%B8%96%E7%95%8C%E8%A7%80/04_%E7%A4%BE%E6%9C%83%E7%A7%A9%E5%BA%8F%E8%88%87%E5%A3%93%E8%BF%AB.md) |
 | ⚙️ 核心系統 | [核心設定與賣點](docs/02_%E6%A0%B8%E5%BF%83%E8%A8%AD%E5%AE%9A/01_%E6%A0%B8%E5%BF%83%E8%A8%AD%E5%AE%9A%E8%88%87%E8%B3%A3%E9%BB%9E.md) · [角色與陣營](docs/02_%E6%A0%B8%E5%BF%83%E8%A8%AD%E5%AE%9A/02_%E8%A7%92%E8%89%B2%E8%88%87%E9%99%A3%E7%87%9F/) · [力量與文明系統](docs/02_%E6%A0%B8%E5%BF%83%E8%A8%AD%E5%AE%9A/03_%E5%8A%9B%E9%87%8F%E8%88%87%E6%96%87%E6%98%8E%E7%B3%BB%E7%B5%B1.md) |
-| 📜 企劃大綱 | [故事主線](docs/00_%E4%BC%81%E5%8A%83%E5%A4%A7%E7%B6%B1/01_%E6%95%85%E4%BA%8B%E4%B8%BB%E7%B7%9A%E8%88%87%E5%8D%B7%E8%BB%B8%E8%A6%8F%E5%8A%83.md) · [全書發展藍圖](docs/00_%E4%BC%81%E5%8A%83%E5%A4%A7%E7%B6%B1/02_%E7%B3%BB%E5%88%97%E9%9A%8E%E6%AE%B5%E7%99%BC%E5%B1%95.md) · [第一卷大綱](docs/00_%E4%BC%81%E5%8A%83%E5%A4%A7%E7%B6%B1/03_%E7%AC%AC%E4%B8%80%E5%8D%B7%E5%A4%A7%E7%B6%B1.md) |
+| 📜 企劃大綱 | [作品總架構與主線](docs/00_%E4%BC%81%E5%8A%83%E5%A4%A7%E7%B6%B1/01_%E4%BD%9C%E5%93%81%E7%B8%BD%E6%9E%B6%E6%A7%8B%E8%88%87%E4%B8%BB%E7%B7%9A.md) · [全書階段與揭密藍圖](docs/00_%E4%BC%81%E5%8A%83%E5%A4%A7%E7%B6%B1/02_%E5%85%A8%E6%9B%B8%E9%9A%8E%E6%AE%B5%E8%88%87%E6%8F%AD%E5%AF%86%E8%97%8D%E5%9C%96.md) · [第一卷大綱](docs/00_%E4%BC%81%E5%8A%83%E5%A4%A7%E7%B6%B1/01_%E5%88%86%E5%8D%B7%E5%A4%A7%E7%B6%B1/01_%E7%AC%AC%E4%B8%80%E5%8D%B7_%E8%89%99%E5%BA%95%E7%A8%AE%E7%81%AB.md) |
 | 📕 名詞辭典 | [專有名詞辭典](docs/03_%E4%B8%96%E7%95%8C%E8%A7%80/05_%E5%B0%88%E6%9C%89%E5%90%8D%E8%A9%9E%E8%BE%AD%E5%85%B8.md) |
