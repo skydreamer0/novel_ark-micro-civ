@@ -1,0 +1,7 @@
+{
+  "githubOwner": "skydreamer0",
+  "githubRepo": "novel_ark-micro-civ",
+  "githubBranch": "main",
+  "includeExtensions": [".md"],
+  "includeFolders": ["docs/01_正文", "章稿"]
+}

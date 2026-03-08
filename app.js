@@ -9,7 +9,17 @@ const config = {
   githubRepo: "novel_ark-micro-civ", // default, will try to infer
   githubBranch: "main",
   includeExtensions: [".md"],
+  includeFolders: ["docs/01_正文", "章稿"],
+  configFile: "reader.config.json",
 };
+
+const CONFIG_KEYS = [
+  "githubOwner",
+  "githubRepo",
+  "githubBranch",
+  "includeExtensions",
+  "includeFolders",
+];
 
 const state = {
   files: [],
@@ -102,7 +112,42 @@ function inferGithubRepo() {
   }
 
   const params = new URLSearchParams(window.location.search);
+  if (params.has("owner")) config.githubOwner = params.get("owner");
+  if (params.has("repo")) config.githubRepo = params.get("repo");
   if (params.has("branch")) config.githubBranch = params.get("branch");
+  if (params.has("folders")) {
+    config.includeFolders = params.get("folders").split(",").map(v => v.trim()).filter(Boolean);
+  }
+  if (params.has("ext")) {
+    config.includeExtensions = params.get("ext").split(",").map(v => v.trim()).filter(Boolean);
+  }
+}
+
+function mergeConfig(partialConfig) {
+  if (!partialConfig || typeof partialConfig !== "object") return;
+
+  for (const key of CONFIG_KEYS) {
+    if (!(key in partialConfig)) continue;
+
+    if (Array.isArray(config[key])) {
+      if (Array.isArray(partialConfig[key])) {
+        config[key] = partialConfig[key].map(v => String(v).trim()).filter(Boolean);
+      }
+    } else if (typeof partialConfig[key] === "string") {
+      config[key] = partialConfig[key].trim();
+    }
+  }
+}
+
+async function loadExternalConfig() {
+  try {
+    const resp = await fetch(`./${config.configFile}?t=${Date.now()}`, { cache: "no-store" });
+    if (!resp.ok) return;
+    const data = await resp.json();
+    mergeConfig(data);
+  } catch (err) {
+    console.info("No external reader.config.json loaded", err);
+  }
 }
 
 function loadState() {
@@ -325,7 +370,14 @@ async function loadFileList() {
     const data = await resp.json();
 
     state.files = data.tree
-      .filter(item => item.type === "blob" && item.path.endsWith(".md") && (item.path.includes("docs/01_正文") || item.path.includes("章稿")))
+      .filter((item) => {
+        if (item.type !== "blob") return false;
+
+        const passExt = config.includeExtensions.some(ext => item.path.endsWith(ext));
+        if (!passExt) return false;
+
+        return config.includeFolders.some(folder => item.path.includes(folder));
+      })
       .map(item => ({
         path: item.path,
         title: item.path.split("/").pop().replace(".md", ""), // Fallback title
@@ -972,6 +1024,7 @@ function bindEvents() {
 // --- Main ---
 
 async function init() {
+  await loadExternalConfig();
   inferGithubRepo();
   loadState();
   applyTheme();
