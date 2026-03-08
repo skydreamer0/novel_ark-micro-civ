@@ -518,6 +518,7 @@ async function loadChapter(path) {
 
     // Update header
     els.chapterTitle.textContent = title;
+    document.title = `${title} - 末日母艦：我的體內有個微縮文明`;
     updateWordCount(text);
 
     // Scroll
@@ -711,6 +712,7 @@ function updateVisibleChapterTitle() {
   if (!isNaN(idx) && idx !== state.activeIndex) {
     state.activeIndex = idx;
     els.chapterTitle.textContent = state.files[idx].title;
+    document.title = `${state.files[idx].title} - 末日母艦：我的體內有個微縮文明`;
     updateBookmarkUI();
     updateActiveSidebarItem();
 
