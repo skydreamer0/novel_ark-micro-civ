@@ -1,4 +1,4 @@
-﻿# 第四卷：投放名冊 (Volume 4: The Deployment Roster)
+# 第四卷：投放名冊 (Volume 4: The Deployment Roster)
 
 ## §1 卷定位
 - **卷名**：第四卷・投放名冊
