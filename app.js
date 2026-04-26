@@ -518,6 +518,8 @@ async function loadChapter(path) {
 
     // Update header
     els.chapterTitle.textContent = title;
+    const chapName = state.files[index].path.split('/').pop().replace('.md', '');
+    document.title = `${chapName} - 末日母艦`;
     updateWordCount(text);
 
     // Scroll
@@ -711,6 +713,8 @@ function updateVisibleChapterTitle() {
   if (!isNaN(idx) && idx !== state.activeIndex) {
     state.activeIndex = idx;
     els.chapterTitle.textContent = state.files[idx].title;
+    const chapName = state.files[idx].path.split('/').pop().replace('.md', '');
+    document.title = `${chapName} - 末日母艦`;
     updateBookmarkUI();
     updateActiveSidebarItem();
 
