@@ -52,16 +52,13 @@ novel_ark-micro-civ/
 
 | # | 檔案 | 內容 |
 |---|---|---|
-| 00 | `unified_arch.md` | **最高邏輯準則**：母艦=OS、權限/能級循環 |
-| 01 | `world_summary.md` | **世界觀總結**：母艦結構、經濟、外域、人口控制 |
-| 02 | `power_system.md` | **力量體系**：H-Compute、主機版本、覆寫、代價 |
-| 03 | `characters.md` | **角色卡**：主角、盟友、反派人設與行為邏輯 |
-| 04 | `plot_outline.md` | **劇情大綱**：重大轉折（無細節描寫） |
-| 05 | `glossary.md` | **詞彙表**：統一全書用語 |
-| 06 | `factions.md` | **勢力設定**：勢力類型、壟斷點、戰鬥風格 |
-| 07 | `foreshadowing.md` | **伏筆追蹤表**：已埋/已回收/待回收 |
-| 08 | `current_state.md` | **目前進度**：第120章狀態錨點 |
-| 09 | `volume_outlines.md` | **分卷大綱**：各卷劇情與章節分配 |
+| 00 | `00_world.md` | **世界規則**（合併）：母艦OS、力量體系、勢力設定 |
+| 01 | `01_characters.md` | **角色卡**：主角、盟友、反派人設與行為邏輯 |
+| 02 | `02_plot.md` | **劇情總覽**（合併）：主線大綱、分卷規劃、第120章進度錨點 |
+| 03 | `03_glossary.md` | **詞彙表**：統一全書用語 |
+| 04 | `04_factions.md` | **勢力設定**：勢力類型、壟斷點、戰鬥風格 |
+| 05 | `05_foreshadowing.md` | **伏筆追蹤表**：已埋/已回收/待回收 |
+| 06 | `06_chapter_beats.md` | **章節節拍**：第116-120章逐章事件摘要，續寫第121章備忘 |
 
 ### 第3步（需要時）：`02_PROJECT_DATABASE/01_RULES/`
 
@@ -71,6 +68,7 @@ novel_ark-micro-civ/
 | 02 | `style_guide.md` | **語感標準**：節奏、段落、台詞、系統提示風格 |
 | 03 | `revision_rules.md` | **修訂與審稿**：品質門檻、AI 味檢測 |
 | 04 | `global_rules.md` | **AI 寫作工作流**：Prompt 模板、修訂 Prompt、審稿 Prompt |
+| 05 | `05_視角與資訊法.md` | **角色資訊視角法**：視角鎖定、資訊不對稱、感知寫作法 |
 
 ### 第4步（補充用）：`02_PROJECT_DATABASE/02_DETAILS/`
 
@@ -90,8 +88,7 @@ novel_ark-micro-civ/
 |---|---|
 | `02_PROJECT_DATABASE/99_ARCHIVE/` | 舊版設定/計劃/範例，與現行設定不一致 |
 | `02_PROJECT_DATABASE/99_ARCHIVE/no_crawl/` | 明確標記為「不爬蟲」的舊資料 |
-| `docs/plans/` | 修復計劃文件（2026-05-16 歷史紀錄） |
-| `docs/roadmap/` | 修復路線圖（歷史紀錄） |
+| `docs/` | 開發修復歷史文件 |
 | `assets/` | 網頁前端資源 |
 | `.agent/` | 本機 AI 代理設定 |
 | `*.js`, `*.css`, `*.html`, `sw.js`, `manifest.json`, `reader.config.json` | 網頁閱讀器代碼 |
@@ -102,12 +99,12 @@ novel_ark-micro-civ/
 
 ```
 1. 讀 .ai/SUMMARY.md                    → 喚醒全局記憶
-2. 讀 02_PROJECT_DATABASE/00_CORE/08    → 確認當前狀態錨點
-3. 讀 02_PROJECT_DATABASE/00_CORE/07    → 確認伏筆回收狀態
-4. 讀 02_PROJECT_DATABASE/01_RULES/01   → 確認寫作規範
+2. 讀 00_CORE/02_plot.md                → 確認當前狀態錨點（含伏筆摘要）
+3. 讀 01_RULES/05_視角與資訊法.md       → 確認寫作技法
+4. 讀 01_RULES/01_writing_rules.md      → 確認寫作規範
 5. 讀目標卷最後 3 章正文                → 確認文風與連貫性
-6. 撰寫新章
-7. 更新 00_CORE/08（current_state.md）
-8. 更新 00_CORE/07（foreshadowing.md）
+6. 撰寫新章（鎖定單一視角、利用資訊差、感知寫作法）
+7. 更新 02_plot.md 的進度錨點
+8. 更新 05_foreshadowing.md
 9. 更新 .ai/SUMMARY.md
 ```
