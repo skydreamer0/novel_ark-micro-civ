@@ -1,0 +1,15 @@
+# robots.txt - 爬蟲規則
+# 本專案為小說創作專案，部分目錄為舊版封存資料，請勿爬取。
+
+User-agent: *
+Disallow: /02_PROJECT_DATABASE/99_ARCHIVE/
+Disallow: /02_PROJECT_DATABASE/99_存檔/
+Disallow: /docs/plans/
+Disallow: /docs/roadmap/
+
+# 允許爬取核心內容
+Allow: /.ai/
+Allow: /01_NOVEL_CONTENT/
+Allow: /02_PROJECT_DATABASE/00_CORE/
+Allow: /02_PROJECT_DATABASE/01_RULES/
+Allow: /02_PROJECT_DATABASE/02_DETAILS/
