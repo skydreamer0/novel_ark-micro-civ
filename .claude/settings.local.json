@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git *)",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\User\\\\OneDrive - MSFT \\(1\\)\\\\0.專案\\\\novel\\\\novel_ark-micro-civ\\\\02_PROJECT_DATABASE\\\\99_ARCHIVE\\\\no_crawl\\\\\" -Directory -Recurse 2>$null | Where-Object {$_.Name -match '進度|status|progress|roadmap|plan|schedule'} | Select-Object FullName)"
+    ]
+  }
+}
