@@ -11,23 +11,31 @@
 novel_ark-micro-civ/
 ├── .ai/                          ← ★ AI 入口（先讀這裡）
 │   ├── SUMMARY.md                ← ★ 必讀。全書一句話摘要 + 核心設定 + 進度
-│   └── INDEX.md                  ← 本檔案。完整的檔案地圖
+│   ├── INDEX.md                  ← 本檔案。完整的檔案地圖
+│   └── 視角技法示範.md            ← ★ 視角鎖定與感知寫作的具體範例（寫作前必讀）
 │
 ├── 01_NOVEL_CONTENT/             ← ★ 小說正文
 │   ├── 01_第一卷_艙底種火/       ← 第1～30章
 │   ├── 02_第二卷_裂縫稅戰/       ← 第31～60章
 │   ├── 03_第三卷_聖城試煉/       ← 第61～90章
-│   └── 04_第四卷_投放名冊/       ← 第91～120章
+│   ├── 04_第四卷_投放名冊/       ← 第91～120章
+│   └── 05_第五卷_黑箱斷流/       ← 第121～150章（待續寫）
 │
 ├── 02_PROJECT_DATABASE/          ← ★ 專案資料庫（寫作參考）
 │   ├── 00_CORE/                  ← ★ 核心設定（AI 續寫前必須讀取）
-│   ├── 01_RULES/                 ← 寫作規則與風格指南
+│   ├── 01_RULES/                 ← 寫作規則與風格指南（含 09_expert_panel.md）
 │   ├── 02_DETAILS/               ← 補充細節（需要時再讀）
 │   └── 99_ARCHIVE/               ← ❌ 封存資料（AI 不應讀取）
 │
-├── .agent/                       ← 本機 AI 代理設定（opencode）
+├── .agent/                       ← 本機 AI 代理設定
+│   ├── workflows/ (7)            ← 工作流（含新增 full-chapter-pipeline）
 │   ├── skills/
-│   │   └── novel-writer/SKILL.md ← ★ AI 寫作技能（寫作前可載入）
+│   │   └── novel-writer/SKILL.md ← ★ AI 寫作技能 v3.0（寫作前可載入）
+│   └── prompts/                  ← 提示詞模板（預留）
+│
+├── scripts/                      ← 自動化腳本
+│   └── count-words.ps1           ← 字數統計腳本
+│
 ├── assets/                       ← 網頁讀者介面資源
 ├── docs/                         ← 開發/修復文件
 │   ├── plans/                    ← ❌ 已封存，請讀 99_ARCHIVE
@@ -75,6 +83,7 @@ novel_ark-micro-civ/
 | 06 | `06_style_dna.md` | **風格 DNA**：理想正文的感性範例——開場/對話/情緒/戰鬥/主機 |
 | 07 | `07_voice_bible.md` | **角色語音庫**：林燼/蘇岚/燕九/顧衡/唐雀/賀老八的對話差異與例句 |
 | 08 | `08_quality_gate.md` | **章節品質閘門**：視角鎖定→資訊差→感知寫作→場景化→結尾鉤子→字數六關 |
+| 09 | `09_expert_panel.md` | **六位專家協作機制**：統一的專家定義、禁止清單與三級品質評級 |
 
 ### 第3.5步（可選）：`.agent/skills/novel-writer/SKILL.md`
 載入此技能可自動獲得完整的寫作規則、設定參考與品質閘門檢查清單，適合續寫新章節時啟用。
@@ -108,7 +117,7 @@ novel_ark-micro-civ/
 | `02_PROJECT_DATABASE/99_ARCHIVE/no_crawl/` | 明確標記為「不爬蟲」的舊資料 |
 | `docs/` | 開發修復歷史文件 |
 | `assets/` | 網頁前端資源 |
-| `.agent/` | 本機 AI 代理設定 |
+| `scripts/` | 自動化腳本（人工使用，非 AI 寫作用） |
 | `*.js`, `*.css`, `*.html`, `sw.js`, `manifest.json`, `reader.config.json` | 網頁閱讀器代碼 |
 
 ---
@@ -116,16 +125,31 @@ novel_ark-micro-civ/
 ## 🔄 寫作/續寫工作流
 
 ```
-1. 讀 .ai/SUMMARY.md                    → 喚醒全局記憶
-2. 讀 00_CORE/02_plot.md                → 確認當前狀態錨點（含伏筆摘要）
-3. 讀 01_RULES/05_視角與資訊法.md       → 確認寫作技法
-4. 讀 01_RULES/01_writing_rules.md      → 確認寫作規範
-5. 讀 01_RULES/06_style_dna.md           → 喚醒正文化風格感覺
-6. 讀 01_RULES/07_voice_bible.md         → 確認角色對話差異
-7. 讀目標卷最後 3 章正文                → 確認文風與連貫性
-8. 撰寫新章（鎖定單一視角、利用資訊差、感知寫作法）
-9. 跑 01_RULES/08_quality_gate.md 所有閘門
-10. 更新 02_plot.md 的進度錨點
-11. 更新 05_foreshadowing.md
-12. 更新 .ai/SUMMARY.md
+1. 讀 .ai/SUMMARY.md                      → 喚醒全局記憶
+2. 讀 00_CORE/02_plot.md                  → 確認當前狀態錨點（含伏筆摘要）
+3. 讀 00_CORE/07_conflict_arcs.md         → 確認高張力弧線
+4. 讀 01_RULES/05_視角與資訊法.md         → 確認寫作技法
+5. 讀 .ai/視角技法示範.md                 → 確認視角鎖定與感知寫作範例
+6. 讀 01_RULES/01_writing_rules.md        → 確認寫作規範
+7. 讀 01_RULES/06_style_dna.md            → 喚醒正文化風格感覺
+8. 讀 01_RULES/07_voice_bible.md          → 確認角色對話差異
+9. 讀目標卷最後 3 章正文                  → 確認文風與連貫性
+10. 撰寫新章（鎖定單一視角、利用資訊差、感知寫作法）
+11. 跑 01_RULES/08_quality_gate.md 所有閘門
+12. 更新 02_plot.md 的進度錨點
+13. 更新 05_foreshadowing.md
+14. 更新 07_conflict_arcs.md
+15. 更新 .ai/SUMMARY.md
 ```
+
+### 📋 可用工作流快速參考
+
+| 指令 | 用途 |
+|---|---|
+| `/volume-planner` | 規劃新卷的 §1~§7 完整大綱 |
+| `/chapter-planner` | 將大綱拆解為章節節奏（模式A） |
+| `/write-chapter` | 依據規劃撰寫正文（模式B） |
+| `/chapter-fusion` | 融合舊稿與新設定（模式C） |
+| `/chapter-qa` | 章節品管審查 |
+| `/world-builder` | 擴展世界觀設定 |
+| `/full-chapter-pipeline` | 一鍵全流程（規劃→撰寫→QA→同步） |
