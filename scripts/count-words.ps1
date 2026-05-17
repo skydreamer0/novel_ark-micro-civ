@@ -24,10 +24,10 @@ $totalWords = 0
 $belowStandard = @()
 
 Write-Host ""
-Write-Host "═══════════════════════════════════════════════════" -ForegroundColor Cyan
-Write-Host "  《微光文明》字數統計報告" -ForegroundColor Cyan
-Write-Host "  統計日期：$(Get-Date -Format 'yyyy-MM-dd')" -ForegroundColor Gray
-Write-Host "═══════════════════════════════════════════════════" -ForegroundColor Cyan
+Write-Host "===================================================" -ForegroundColor Cyan
+Write-Host "  << Novel Word Count Report >>" -ForegroundColor Cyan
+Write-Host "  Date: $(Get-Date -Format 'yyyy-MM-dd')" -ForegroundColor Gray
+Write-Host "===================================================" -ForegroundColor Cyan
 Write-Host ""
 
 foreach ($vol in $volumes) {
@@ -39,8 +39,8 @@ foreach ($vol in $volumes) {
     $volMinName = ""
     $volMaxName = ""
     
-    Write-Host "📖 $($vol.Name)" -ForegroundColor Yellow
-    Write-Host "─────────────────────────────────────────────────"
+    Write-Host ">> $($vol.Name)" -ForegroundColor Yellow
+    Write-Host "-------------------------------------------------"
     
     foreach ($ch in $chapters) {
         $content = Get-Content -Path $ch.FullName -Raw -Encoding UTF8
@@ -55,45 +55,46 @@ foreach ($vol in $volumes) {
         if ($wordCount -lt $volMin) { $volMin = $wordCount; $volMinName = $chName }
         if ($wordCount -gt $volMax) { $volMax = $wordCount; $volMaxName = $chName }
         
-        $status = if ($wordCount -ge 3000) { "✅" } else { "❌"; $belowStandard += "$chName ($wordCount)" }
+        $status = if ($wordCount -ge 3000) { "PASS" } else { "FAIL"; $belowStandard += "$chName ($wordCount)" }
         
         if ($Detailed) {
-            $bar = "█" * [math]::Min([math]::Floor($wordCount / 200), 30)
-            Write-Host ("  {0,-30} {1,5} 字 {2} {3}" -f $chName, $wordCount, $status, $bar)
+            $bar = "#" * [math]::Min([math]::Floor($wordCount / 200), 30)
+            Write-Host ("  {0,-30} {1,5} words [{2}] {3}" -f $chName, $wordCount, $status, $bar)
         }
     }
     
     $volAvg = if ($volChapters -gt 0) { [math]::Round($volWords / $volChapters) } else { 0 }
-    $volPass = ($chapters | Where-Object {
-        $c = Get-Content -Path $_.FullName -Raw -Encoding UTF8
-        ([regex]::Matches($c, $cjkPattern)).Count -ge 3000
-    }).Count
+    $volPass = 0
+    foreach ($ch in $chapters) {
+        $c = Get-Content -Path $ch.FullName -Raw -Encoding UTF8
+        if (([regex]::Matches($c, $cjkPattern)).Count -ge 3000) { $volPass++ }
+    }
     $volRate = if ($volChapters -gt 0) { [math]::Round($volPass / $volChapters * 100, 1) } else { 0 }
     
     Write-Host ""
-    Write-Host "  章數: $volChapters | 總字數: $($volWords.ToString('N0')) | 平均: $volAvg | 達標率: $volRate%"
-    Write-Host "  最長: $volMaxName ($volMax) | 最短: $volMinName ($volMin)"
+    Write-Host "  Chapters: $volChapters | Total Words: $($volWords.ToString('N0')) | Avg: $volAvg | Pass Rate: $volRate%"
+    Write-Host "  Max: $volMaxName ($volMax) | Min: $volMinName ($volMin)"
     Write-Host ""
     
     $totalChapters += $volChapters
     $totalWords += $volWords
 }
 
-Write-Host "═══════════════════════════════════════════════════" -ForegroundColor Cyan
-Write-Host "  全書統計" -ForegroundColor Cyan
-Write-Host "─────────────────────────────────────────────────"
-Write-Host "  總章數: $totalChapters"
-Write-Host "  總字數: $($totalWords.ToString('N0'))"
-Write-Host "  平均字數: $([math]::Round($totalWords / [math]::Max($totalChapters, 1)))"
-Write-Host "  達標率: $([math]::Round(($totalChapters - $belowStandard.Count) / [math]::Max($totalChapters, 1) * 100, 1))%"
+Write-Host "===================================================" -ForegroundColor Cyan
+Write-Host "  Global Stats" -ForegroundColor Cyan
+Write-Host "-------------------------------------------------"
+Write-Host "  Total Chapters: $totalChapters"
+Write-Host "  Total Words: $($totalWords.ToString('N0'))"
+Write-Host "  Average Words: $([math]::Round($totalWords / [math]::Max($totalChapters, 1)))"
+Write-Host "  Pass Rate: $([math]::Round(($totalChapters - $belowStandard.Count) / [math]::Max($totalChapters, 1) * 100, 1))%"
 Write-Host ""
 
 if ($belowStandard.Count -gt 0) {
-    Write-Host "⚠️ 未達標章節 ($($belowStandard.Count) 章):" -ForegroundColor Red
+    Write-Host "WARNING: Below-Standard Chapters ($($belowStandard.Count) chapters):" -ForegroundColor Red
     foreach ($bs in $belowStandard) {
         Write-Host "  - $bs" -ForegroundColor Red
     }
 }
 
 Write-Host ""
-Write-Host "═══════════════════════════════════════════════════" -ForegroundColor Cyan
+Write-Host "===================================================" -ForegroundColor Cyan
