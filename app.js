@@ -9,7 +9,7 @@ const config = {
   githubRepo: "novel_ark-micro-civ", // default, will try to infer
   githubBranch: "main",
   includeExtensions: [".md"],
-  includeFolders: ["docs/01_正文", "章稿"],
+  includeFolders: ["01_NOVEL_CONTENT"],
   configFile: "reader.config.json",
 };
 
