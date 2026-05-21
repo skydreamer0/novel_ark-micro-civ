@@ -37,10 +37,6 @@ novel_ark-micro-civ/
 │   └── count-words.ps1           ← 字數統計腳本
 │
 ├── assets/                       ← 網頁讀者介面資源
-├── docs/                         ← 開發/修復文件
-│   ├── plans/                    ← ❌ 已封存，請讀 99_ARCHIVE
-│   └── roadmap/                  ← ❌ 已封存，請讀 99_ARCHIVE
-│
 ├── app.js                        ← 網頁閱讀器
 ├── index.html                    ← 網頁閱讀器入口
 ├── styles.css                    ← 網頁樣式
@@ -119,7 +115,9 @@ novel_ark-micro-civ/
 |---|---|
 | `02_PROJECT_DATABASE/99_ARCHIVE/` | 舊版設定/計劃/範例，與現行設定不一致 |
 | `02_PROJECT_DATABASE/99_ARCHIVE/no_crawl/` | 明確標記為「不爬蟲」的舊資料 |
-| `docs/` | 開發修復歷史文件 |
+| `02_PROJECT_DATABASE/99_ARCHIVE/no_crawl/docs_history/` | 已處理的開發修復歷史文件 |
+| `02_PROJECT_DATABASE/99_ARCHIVE/no_crawl/drafts/` | 已轉正或過期的章節草稿 |
+| `02_PROJECT_DATABASE/99_ARCHIVE/no_crawl/reports/` | 已完成的架構審查與改善報告 |
 | `assets/` | 網頁前端資源 |
 | `scripts/` | 自動化腳本（人工使用，非 AI 寫作用） |
 | `*.js`, `*.css`, `*.html`, `sw.js`, `manifest.json`, `reader.config.json` | 網頁閱讀器代碼 |
