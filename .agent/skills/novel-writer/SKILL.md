@@ -1,6 +1,6 @@
 ---
 name: novel-writer
-version: v3.0 — 第120章後（2026-05-17 更新）
+version: v3.2 — 第144章後（2026-05-22 更新）
 description: 撰寫/續寫《末日母艦》科幻小說章節的專用技能。自動載入核心設定、寫作規則、風格指南與進度錨點。
 tools:
   - Read
@@ -25,7 +25,7 @@ scenarios:
 ### 小說基本資訊
 - **書名**：《末日母艦：我的體內有個微縮文明》（英文：Mothership: Inner Micro-Civilization）
 - **類型**：科幻末世 + 階級壓迫 + 文明主機外掛 + 稅戰經濟爽文
-- **當前進度**：第1～120章完稿（共4卷），第5卷（121～150章）待續寫
+- **當前進度**：第1～144章完稿（第5卷進行中），下一章接第145章，處理「非母艦單位」補給請求與陌生更新簽名
 - **一句話定位**：母艦 = 封閉作業系統，主角 = 入侵的病毒文明
 
 ### 核心隱喻
@@ -116,6 +116,7 @@ scenarios:
 > ⚠️ 以下為動態引用，不再硬編碼。續寫前必須讀取最新版本。
 
 - **進度錨點**：讀取 `02_PROJECT_DATABASE/00_CORE/02_plot.md` 中最新卷的狀態錨點段落。
+- **後續架構**：讀取 `02_PROJECT_DATABASE/00_CORE/12_current_structure_plan.md` 中截至最新章節的總架構錨點。
 - **進行中敘事線**：讀取 `.ai/SUMMARY.md` 的「目前進行中的敘事線」段落。
 - **高張力弧線**：讀取 `02_PROJECT_DATABASE/00_CORE/07_conflict_arcs.md` 的優先級排序。
 - **待回收伏筆**：讀取 `02_PROJECT_DATABASE/00_CORE/05_foreshadowing.md` 中所有 🔴 項目。
@@ -157,12 +158,13 @@ scenarios:
 ## 第七部分：技能元數據
 
 - **name**: novel-writer
-- **version**: v3.0 — 第120章後（2026-05-17 更新）
+- **version**: v3.2 — 第144章後（2026-05-22 更新）
 - **description**: 撰寫/續寫《末日母艦》章節的專用技能。載入後自動喚醒核心設定、寫作規則、風格指南與當前進度錨點。
 - **tools**: Read, Write, Edit, Grep, Glob
 - **scenarios**: 續寫新章節、修訂既有章節、大綱規劃
 - **dependencies**: 
   - `.ai/SUMMARY.md`（全局記憶）
+  - `02_PROJECT_DATABASE/00_CORE/12_current_structure_plan.md`（後續架構總整理）
   - `.ai/視角技法示範.md`（視角鎖定與感知寫作範例）
   - `02_PROJECT_DATABASE/00_CORE/`（核心設定）
   - `02_PROJECT_DATABASE/01_RULES/`（寫作規則與風格指南，含 09_expert_panel.md）
@@ -172,7 +174,8 @@ scenarios:
 ---
 
 *版本歷史：*
+- v3.2（2026-05-22）：同步第144章後進度錨點，續寫入口改為第145章
+- v3.1（2026-05-22）：同步第143章後進度錨點，加入後續架構總整理讀取要求
 - v3.0（2026-05-17）：動態錨點改造、統一角色名、新增衝突弧線與視角示範引用
 - v2.0：第120章完稿後更新
 - v1.0：初始版本
-
