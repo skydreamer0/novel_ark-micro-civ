@@ -2,6 +2,6 @@
   "githubOwner": "skydreamer0",
   "githubRepo": "novel_ark-micro-civ",
   "githubBranch": "main",
-  "includeExtensions": [".md"],
+  "includeExtensions": [".md", ".MD"],
   "includeFolders": ["01_NOVEL_CONTENT"]
 }

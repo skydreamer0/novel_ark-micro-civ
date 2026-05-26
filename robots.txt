@@ -3,9 +3,7 @@
 
 User-agent: *
 Disallow: /02_PROJECT_DATABASE/99_ARCHIVE/
-Disallow: /02_PROJECT_DATABASE/99_存檔/
 Disallow: /docs/plans/
-Disallow: /docs/roadmap/
 
 # 允許爬取核心內容
 Allow: /.ai/

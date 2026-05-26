@@ -1,6 +1,8 @@
 {
   "name": "Mothership: Inner Micro-Civilization",
   "short_name": "Mothership",
+  "description": "末日母艦：我的體內有個微縮文明 — 賽博龐克 × 文明養成 × 陰謀揭露網路小說",
+  "categories": ["entertainment", "books", "utilities"],
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#faf7f0",

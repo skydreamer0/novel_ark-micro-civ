@@ -6,7 +6,7 @@
 
 > *Mothership: Inner Micro-Civilization*
 
-[![Genre](https://img.shields.io/badge/賽博龐克-外域生存-orange?style=for-the-badge)](#) [![Genre](https://img.shields.io/badge/文明養成-陰謀揭露-blueviolet?style=for-the-badge)](#) [![Status](https://img.shields.io/badge/連載中-Vol.5進行中-blue?style=for-the-badge)](#)
+[![Genre](https://img.shields.io/badge/賽博龐克-外域生存-orange?style=for-the-badge)](#) [![Genre](https://img.shields.io/badge/文明養成-陰謀揭露-blueviolet?style=for-the-badge)](#) [![Status](https://img.shields.io/badge/連載中-V6第一幕完稿-blue?style=for-the-badge)](#)
 
 ---
 
@@ -69,6 +69,8 @@
 | 第二卷 | Ch.31–60 | 裂縫稅戰 | ✅ 完稿 |
 | 第三卷 | Ch.61–90 | 聖城試煉 | ✅ 完稿 |
 | 第四卷 | Ch.91–120 | 投放名冊 | ✅ 完稿 |
-| **第五卷** | **Ch.121–150** | **黑箱斷流** | **🔄 撰寫中** |
+| 第五卷 | Ch.121–160 | 黑箱斷流 | ✅ 完稿 |
+| **第六卷第一幕** | **Ch.161–175** | **母艦全面反制** | **✅ 完稿** |
+| **第六卷第二～三幕** | **Ch.176–210** | **權限戰爭（規劃）** | **⏳ 規劃中** |
 
-> 最後更新：2026-05-17｜目前完成 120 章，共規劃 150 章（第五卷起點：Ch.121）
+> 最後更新：2026-05-26｜目前完成 175 章，全書規劃 390+ 章（完成度 44.9%）
