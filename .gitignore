@@ -25,3 +25,6 @@ build/
 # Node (if added later)
 node_modules/
 
+
+# Claude worktrees
+.claude/worktrees/
