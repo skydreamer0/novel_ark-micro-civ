@@ -616,6 +616,48 @@ body {
   }
 }
 
+/* Search */
+.search-mode-toggle {
+  position: absolute;
+  right: 36px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  line-height: 1.4;
+}
+.search-mode-toggle.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+.search-result-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.search-result-snippet {
+  font-size: 0.8rem;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 2px;
+}
+.search-status {
+  text-align: center;
+  padding: 24px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   :root {
