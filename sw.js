@@ -1,4 +1,4 @@
-const CACHE_NAME = 'mothership-reader-v9';
+const CACHE_NAME = 'mothership-reader-v10';
 const ASSETS = [
     './',
     './index.html',
@@ -18,8 +18,7 @@ const ASSETS = [
     './modules/tts.js',
     './assets/favicon.png',
     './assets/icon-192.png',
-    './assets/icon-512.png',
-    'https://cdn.jsdelivr.net/npm/marked/marked.min.js'
+    './assets/icon-512.png'
 ];
 
 self.addEventListener('install', (e) => {
@@ -46,6 +45,21 @@ self.addEventListener('fetch', (e) => {
     // Actually, Stale-While-Revalidate is best for content that might update.
 
     const url = new URL(e.request.url);
+
+    if (e.request.mode === 'navigate') {
+        e.respondWith(
+            caches.open(CACHE_NAME).then(async (cache) => {
+                try {
+                    const networkResponse = await fetch(e.request);
+                    cache.put(e.request, networkResponse.clone());
+                    return networkResponse;
+                } catch {
+                    return (await cache.match(e.request)) || cache.match('./index.html');
+                }
+            })
+        );
+        return;
+    }
 
     // If it's an MD file or API call to GitHub
     if (url.pathname.endsWith('.md') || url.hostname.includes('github')) {
