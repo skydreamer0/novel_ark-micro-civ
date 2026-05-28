@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Serif+TC:wght@400;500;700&display=swap');
+/* Fonts loaded via <link> in index.html for render performance */
 
 :root {
   /* Premium Palette - Light */
@@ -13,6 +13,7 @@
   --shadow: 0 4px 20px rgba(45, 35, 24, 0.06);
   --sidebar-bg: rgba(247, 244, 238, 0.85);
   --selection: rgba(184, 79, 44, 0.2);
+  --shimmer: rgba(45, 35, 24, 0.04);
 
   /* Metrics */
   --sidebar-width: 340px;
@@ -43,6 +44,7 @@ body[data-theme="dark"] {
   --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
   --sidebar-bg: rgba(13, 17, 23, 0.85);
   --selection: rgba(232, 168, 76, 0.25);
+  --shimmer: rgba(230, 237, 243, 0.04);
 }
 
 /* Base Reset & Typography */
@@ -440,6 +442,78 @@ body {
   margin: 2em 0;
 }
 
+/* === Skeleton Loading === */
+.content.loading {
+  position: relative;
+  min-height: 450px;
+}
+
+.content.loading::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: 8px;
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(90deg, var(--line) 45%, transparent 45%),
+    linear-gradient(90deg, var(--line) 100%, transparent 100%),
+    linear-gradient(90deg, var(--line) 100%, transparent 100%),
+    linear-gradient(90deg, var(--line) 88%, transparent 88%),
+    linear-gradient(90deg, var(--line) 72%, transparent 72%),
+    linear-gradient(90deg, var(--line) 95%, transparent 95%),
+    linear-gradient(90deg, var(--line) 78%, transparent 78%),
+    linear-gradient(90deg, var(--line) 85%, transparent 85%),
+    linear-gradient(90deg, var(--line) 65%, transparent 65%),
+    linear-gradient(90deg, var(--line) 90%, transparent 90%),
+    linear-gradient(90deg, var(--line) 75%, transparent 75%),
+    linear-gradient(90deg, var(--line) 82%, transparent 82%),
+    linear-gradient(90deg, var(--line) 68%, transparent 68%),
+    linear-gradient(90deg, var(--line) 88%, transparent 88%),
+    linear-gradient(90deg, var(--line) 60%, transparent 60%);
+  background-repeat: no-repeat;
+  background-size:
+    55% 30px, 100% 14px, 100% 14px, 88% 14px, 72% 14px,
+    95% 14px, 78% 14px, 85% 14px, 65% 14px, 90% 14px,
+    75% 14px, 82% 14px, 68% 14px, 88% 14px, 60% 14px;
+  background-position:
+    0 0,
+    0 44px, 0 66px, 0 88px, 0 110px,
+    0 132px, 0 154px, 0 176px, 0 198px, 0 220px,
+    0 242px, 0 264px, 0 286px, 0 308px, 0 330px;
+}
+
+.content.loading::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  border-radius: 8px;
+  background: linear-gradient(90deg, transparent 0%, var(--shimmer) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 2s ease-in-out infinite;
+}
+
+@keyframes skeleton-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Screen-reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* Bottom Navigation */
 .bottom-nav {
   display: flex;
@@ -614,6 +688,8 @@ body {
 
 /* --- Infinite Scroll: Chapter Divider --- */
 .chapter-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 400px;
   margin-bottom: 2em;
 }
 

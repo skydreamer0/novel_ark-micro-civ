@@ -358,10 +358,43 @@ function getApiUrl(path) {
   return `https://raw.githubusercontent.com/${config.githubOwner}/${config.githubRepo}/${branch}/${pathEnc}`;
 }
 
+const TREE_CACHE_KEY = "reader-tree-cache";
+const TREE_CACHE_TTL = 5 * 60 * 1000; // 5 minutes
+
+function getCachedTree() {
+  try {
+    const raw = localStorage.getItem(TREE_CACHE_KEY);
+    if (!raw) return null;
+    const cached = JSON.parse(raw);
+    if (Date.now() - cached.ts > TREE_CACHE_TTL) {
+      localStorage.removeItem(TREE_CACHE_KEY);
+      return null;
+    }
+    return cached.tree;
+  } catch {
+    return null;
+  }
+}
+
+function setCachedTree(tree) {
+  try {
+    localStorage.setItem(TREE_CACHE_KEY, JSON.stringify({ ts: Date.now(), tree }));
+  } catch {
+    // localStorage full — ignore
+  }
+}
+
 async function loadFileList() {
   els.status.textContent = "正在同步資料...";
 
-  // Try Github API for tree
+  // Check localStorage cache first
+  const cached = getCachedTree();
+  if (cached) {
+    state.files = cached;
+    els.status.textContent = `共 ${state.files.length} 章`;
+    return;
+  }
+
   const treeUrl = `https://api.github.com/repos/${config.githubOwner}/${config.githubRepo}/git/trees/${config.githubBranch}?recursive=1`;
 
   try {
@@ -372,25 +405,24 @@ async function loadFileList() {
     state.files = data.tree
       .filter((item) => {
         if (item.type !== "blob") return false;
-
         const passExt = config.includeExtensions.some(ext => item.path.endsWith(ext));
         if (!passExt) return false;
-
         return config.includeFolders.some(folder => item.path.includes(folder));
       })
       .map(item => ({
         path: item.path,
-        title: item.path.split("/").pop().replace(".md", ""), // Fallback title
+        title: item.path.split("/").pop().replace(".md", ""),
         size: item.size
       }))
       .sort((a, b) => naturalSort(a.path, b.path));
 
+    setCachedTree(state.files);
     els.status.textContent = `共 ${state.files.length} 章`;
 
   } catch (err) {
     console.error(err);
-    els.status.textContent = "目錄載入失敗";
-    // Fallback?
+    els.status.textContent = "目錄載入失敗，3 秒後重試...";
+    setTimeout(() => loadFileList(), 3000);
   }
 }
 
@@ -491,7 +523,7 @@ async function loadChapter(path) {
   state.activeIndex = index;
 
   els.chapterTitle.textContent = "載入中...";
-  els.content.style.opacity = "0.5";
+  els.content.classList.add("loading");
   els.content.innerHTML = "";
   updateActiveSidebarItem();
 
@@ -518,6 +550,8 @@ async function loadChapter(path) {
 
     // Update header
     els.chapterTitle.textContent = title;
+    const statusEl = document.getElementById("content-status");
+    if (statusEl) statusEl.textContent = `已載入：${title}`;
     const chapName = state.files[index].path.split('/').pop().replace('.md', '');
     document.title = `${chapName} - 末日母艦`;
     updateWordCount(text);
@@ -527,11 +561,13 @@ async function loadChapter(path) {
     window.scrollTo({ top: savedPos || 0, behavior: "auto" });
 
     // Fade in
+    els.content.classList.remove("loading");
     els.content.style.opacity = "0";
     requestAnimationFrame(() => {
       els.content.style.transition = "opacity 0.6s ease-out";
       els.content.style.opacity = "1";
     });
+    setTimeout(() => manageFocus(), 100);
 
     updateNavButtons();
     updateBookmarkUI();
@@ -548,11 +584,24 @@ async function loadChapter(path) {
     }
 
   } catch (err) {
+    els.content.classList.remove("loading");
     els.content.innerHTML = `<div style="text-align:center; padding: 40px; color: var(--accent)">
       <h3>讀取失敗</h3><p>${err.message}</p>
       <button onclick="location.reload()" class="nav-btn" style="margin:20px auto; width:auto">重試</button>
     </div>`;
   }
+}
+
+/**
+ * Move focus to the chapter title after content loads, for keyboard + SR users.
+ */
+function manageFocus() {
+  const title = els.chapterTitle;
+  title.setAttribute("tabindex", "-1");
+  title.focus({ preventScroll: true });
+  title.addEventListener("blur", () => {
+    title.removeAttribute("tabindex");
+  }, { once: true });
 }
 
 /**
@@ -666,7 +715,8 @@ async function appendNextChapter() {
  */
 function updateWordCount(text) {
   const wc = countWords(text);
-  els.wordCount.textContent = `| ${wc} 字`;
+  const readingTime = Math.max(1, Math.round(wc / 350));
+  els.wordCount.textContent = `| ${wc} 字 · 約 ${readingTime} 分鐘`;
   els.wordCount.title = wc < 3000 ? "字數較少" : "字數充足";
   els.wordCount.style.color = wc < 3000 ? "var(--accent)" : "var(--muted)";
 }
@@ -774,19 +824,14 @@ function renderSidebar() {
     files.forEach(file => {
       const btn = document.createElement("button");
       btn.className = "chapter-btn";
+      btn.dataset.path = file.path;
       btn.textContent = file.title;
       if (state.bookmarks.has(file.path)) {
         btn.innerHTML += `<span style="color:var(--accent);margin-left:auto">⚑</span>`;
       }
       btn.onclick = () => loadChapter(file.path);
-      if (state.activeIndex >= 0 && state.files[state.activeIndex].path === file.path) {
+      if (state.activeIndex >= 0 && state.files[state.activeIndex]?.path === file.path) {
         btn.classList.add("active");
-        // Scroll sidebar to active item
-        setTimeout(() => {
-          if (btn.classList.contains("active")) {
-            btn.scrollIntoView({ block: "center", behavior: "smooth" });
-          }
-        }, 300);
       }
       groupDiv.appendChild(btn);
     });
@@ -859,7 +904,17 @@ function handleTouchEnd(e) {
 }
 
 function updateActiveSidebarItem() {
-  renderSidebar(); // Simple re-render to update 'active' class
+  const prev = els.chapterList.querySelector(".chapter-btn.active");
+  if (prev) prev.classList.remove("active");
+
+  const activeFile = state.files[state.activeIndex];
+  if (!activeFile) return;
+
+  const next = els.chapterList.querySelector(`.chapter-btn[data-path="${CSS.escape(activeFile.path)}"]`);
+  if (!next) return;
+
+  next.classList.add("active");
+  next.scrollIntoView({ block: "center", behavior: "smooth" });
 }
 
 function updateNavButtons() {
