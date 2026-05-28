@@ -87,6 +87,8 @@ export function manageFocus() {
   }, { once: true });
 }
 
+const marked = window.marked;
+
 export function createChapterSection(index, title, rawText) {
   const section = document.createElement("section");
   section.className = "chapter-section";
