@@ -5,7 +5,7 @@ export const config = {
   githubBranch: "main",
   includeExtensions: [".md"],
   includeFolders: ["01_NOVEL_CONTENT"],
-  configFile: "reader.config.json",
+  configFile: "reader/config.json",
 };
 
 export const CONFIG_KEYS = [
