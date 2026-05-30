@@ -128,16 +128,16 @@ novel_ark-micro-civ/
 
 ```
 1. 讀 .ai/SUMMARY.md                      → 喚醒全局記憶
-2. 讀 00_CORE/02_plot.md                  → 確認當前狀態錨點（含伏筆摘要）
-3. 讀 00_CORE/07_conflict_arcs.md         → 確認高張力弧線
-4. 讀 01_RULES/05_視角與資訊法.md         → 確認寫作技法
+2. 讀 02_PROJECT_DATABASE/STATE.md (§1+§3+§9)                  → 確認當前狀態錨點（含伏筆摘要）
+3. 讀 02_PROJECT_DATABASE/STATE.md §7 衝突弧線         → 確認高張力弧線
+4. 讀 02_PROJECT_DATABASE/STYLE.md §2         → 確認寫作技法
 5. 讀 .ai/視角技法示範.md                 → 確認視角鎖定與感知寫作範例
-6. 讀 01_RULES/01_writing_rules.md        → 確認寫作規範
-7. 讀 01_RULES/06_style_dna.md            → 喚醒正文化風格感覺
-8. 讀 01_RULES/07_voice_bible.md          → 確認角色對話差異
+6. 讀 02_PROJECT_DATABASE/RULES.md        → 確認寫作規範
+7. 讀 02_PROJECT_DATABASE/STYLE.md §7            → 喚醒正文化風格感覺
+8. 讀 02_PROJECT_DATABASE/STYLE.md §6          → 確認角色對話差異
 9. 讀目標卷最後 3 章正文                  → 確認文風與連貫性
 10. 撰寫新章（鎖定單一視角、利用資訊差、感知寫作法）
-11. 跑 01_RULES/08_quality_gate.md 所有閘門
+11. 跑 02_PROJECT_DATABASE/RULES.md §6 所有閘門
 12. 更新 02_plot.md 的進度錨點
 13. 更新 05_foreshadowing.md
 14. 更新 07_conflict_arcs.md

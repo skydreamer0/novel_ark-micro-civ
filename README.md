@@ -54,11 +54,13 @@
 
 | 分類 | 文檔 |
 |:---|:---|
-| 🌐 世界觀 | [`00_world.md`](02_PROJECT_DATABASE/00_CORE/00_world.md) — 世界規則、OS 隱喻、資源循環 |
-| 👥 角色與陣營 | [`01_characters.md`](02_PROJECT_DATABASE/00_CORE/01_characters.md) · [`04_factions.md`](02_PROJECT_DATABASE/00_CORE/04_factions.md) |
-| 📖 劇情主線 | [`02_plot.md`](02_PROJECT_DATABASE/00_CORE/02_plot.md) · [`12_current_structure_plan.md`](02_PROJECT_DATABASE/00_CORE/12_current_structure_plan.md) |
-| 📕 名詞辭典 | [`03_glossary.md`](02_PROJECT_DATABASE/00_CORE/03_glossary.md) |
-| 📊 寫作進度 | [`進度儀表板.md`](02_PROJECT_DATABASE/02_DETAILS/進度儀表板.md) |
+| 🌐 世界觀 | [`CANON_world.md`](02_PROJECT_DATABASE/CANON_world.md) — 世界規則、OS 隱喻、資源循環、勢力地盤、術語表 |
+| 👥 角色與陣營 | [`CANON_characters.md`](02_PROJECT_DATABASE/CANON_characters.md) — 角色卡與跨卷弧線（勢力索引見 `CANON_world.md` §17） |
+| ⚙️ 力量／資源／人口 | [`CANON_power.md`](02_PROJECT_DATABASE/CANON_power.md) — 主機 V0–V14、L/H/碎片/燃料、阿卡夏熔爐、雙人口體系 |
+| 📖 當前劇情狀態 | [`STATE.md`](02_PROJECT_DATABASE/STATE.md) — 章節錨點、開放伏筆、衝突弧線、續寫決策清單 |
+| ✍️ 寫作風格與規則 | [`STYLE.md`](02_PROJECT_DATABASE/STYLE.md) · [`RULES.md`](02_PROJECT_DATABASE/RULES.md) |
+| 🔮 未來規劃 | [`FUTURE.md`](02_PROJECT_DATABASE/FUTURE.md) — V8–V14 終局世界觀、章節大綱、寫作路線圖、字數進度 |
+| 📚 各卷架構 | [`VOLUMES/`](02_PROJECT_DATABASE/VOLUMES/) — vol01–vol06（第五卷分 a/b/c） |
 
 ---
 
