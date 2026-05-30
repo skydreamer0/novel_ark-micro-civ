@@ -25,7 +25,7 @@ novel_ark-micro-civ/
 │   ├── 00_CORE/                  ← ★ 核心設定（AI 續寫前必須讀取）
 │   ├── 01_RULES/                 ← 寫作規則與風格指南（含 09_expert_panel.md）
 │   ├── 02_DETAILS/               ← 補充細節（需要時再讀）
-│   └── 99_ARCHIVE/               ← ❌ 封存資料（AI 不應讀取）
+│   └── 04_ARCHIVE/               ← ❌ 封存資料（AI 不應讀取）
 │
 ├── .agent/                       ← 本機 AI 代理設定
 │   ├── workflows/ (7)            ← 工作流（含新增 full-chapter-pipeline）
@@ -113,11 +113,11 @@ novel_ark-micro-civ/
 
 | 路徑 | 原因 |
 |---|---|
-| `02_PROJECT_DATABASE/99_ARCHIVE/` | 舊版設定/計劃/範例，與現行設定不一致 |
-| `02_PROJECT_DATABASE/99_ARCHIVE/no_crawl/` | 明確標記為「不爬蟲」的舊資料 |
-| `02_PROJECT_DATABASE/99_ARCHIVE/no_crawl/docs_history/` | 已處理的開發修復歷史文件 |
-| `02_PROJECT_DATABASE/99_ARCHIVE/no_crawl/drafts/` | 已轉正或過期的章節草稿 |
-| `02_PROJECT_DATABASE/99_ARCHIVE/no_crawl/reports/` | 已完成的架構審查與改善報告 |
+| `02_PROJECT_DATABASE/04_ARCHIVE/` | 舊版設定/計劃/範例，與現行設定不一致 |
+| `02_PROJECT_DATABASE/04_ARCHIVE/no_crawl/` | 明確標記為「不爬蟲」的舊資料 |
+| `02_PROJECT_DATABASE/04_ARCHIVE/no_crawl/docs_history/` | 已處理的開發修復歷史文件 |
+| `02_PROJECT_DATABASE/04_ARCHIVE/no_crawl/drafts/` | 已轉正或過期的章節草稿 |
+| `02_PROJECT_DATABASE/04_ARCHIVE/no_crawl/reports/` | 已完成的架構審查與改善報告 |
 | `assets/` | 網頁前端資源 |
 | `scripts/` | 自動化腳本（人工使用，非 AI 寫作用） |
 | `*.js`, `*.css`, `*.html`, `sw.js`, `manifest.json`, `reader.config.json` | 網頁閱讀器代碼 |

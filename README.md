@@ -20,7 +20,7 @@
 
 它能在體內孕育微縮文明、吸收信仰之力、加速煉化外域資源。
 
-當所有人都在為了一口飯拼命掠奪的時候，林羽開始以文明為燃料，走上了一條與所有人截然不同的進化之路。
+當所有人都在為了一口飯拼命掠奪的時候，林燼開始以文明為燃料，走上了一條與所有人截然不同的進化之路。
 
 但隨著力量的增長，他逐漸看見了這個世界不願被看見的真相——
 
@@ -50,14 +50,15 @@
 
 ## 📂 設定資料庫
 
-想深入了解這個世界的底層邏輯？以下是完整的設定文檔：
+想深入了解這個世界的底層邏輯？以下是核心設定文檔：
 
 | 分類 | 文檔 |
 |:---|:---|
-| 🌐 世界觀 | [母艦與都市結構](docs/03_%E4%B8%96%E7%95%8C%E8%A7%80/01_%E6%AF%8D%E8%89%A6%E8%88%87%E9%83%BD%E5%B8%82%E7%B5%90%E6%A7%8B.md) · [場景與生態危機](docs/03_%E4%B8%96%E7%95%8C%E8%A7%80/02_%E5%A0%B4%E6%99%AF%E8%88%87%E7%94%9F%E6%85%8B%E5%8D%B1%E6%A9%9F.md) · [資源與轉化規則](docs/03_%E4%B8%96%E7%95%8C%E8%A7%80/03_%E8%B3%87%E6%BA%90%E8%88%87%E8%BD%89%E5%8C%96%E8%A6%8F%E5%89%87.md) · [社會秩序與壓迫](docs/03_%E4%B8%96%E7%95%8C%E8%A7%80/04_%E7%A4%BE%E6%9C%83%E7%A7%A9%E5%BA%8F%E8%88%87%E5%A3%93%E8%BF%AB.md) |
-| ⚙️ 核心系統 | [核心設定與賣點](docs/02_%E6%A0%B8%E5%BF%83%E8%A8%AD%E5%AE%9A/01_%E6%A0%B8%E5%BF%83%E8%A8%AD%E5%AE%9A%E8%88%87%E8%B3%A3%E9%BB%9E.md) · [角色與陣營](docs/02_%E6%A0%B8%E5%BF%83%E8%A8%AD%E5%AE%9A/02_%E8%A7%92%E8%89%B2%E8%88%87%E9%99%A3%E7%87%9F/) · [力量與文明系統](docs/02_%E6%A0%B8%E5%BF%83%E8%A8%AD%E5%AE%9A/03_%E5%8A%9B%E9%87%8F%E8%88%87%E6%96%87%E6%98%8E%E7%B3%BB%E7%B5%B1.md) |
-| 📜 企劃大綱 | [作品總架構與主線](docs/00_%E4%BC%81%E5%8A%83%E5%A4%A7%E7%B6%B1/01_%E4%BD%9C%E5%93%81%E7%B8%BD%E6%9E%B6%E6%A7%8B%E8%88%87%E4%B8%BB%E7%B7%9A.md) · [全書階段與揭密藍圖](docs/00_%E4%BC%81%E5%8A%83%E5%A4%A7%E7%B6%B1/02_%E5%85%A8%E6%9B%B8%E9%9A%8E%E6%AE%B5%E8%88%87%E6%8F%AD%E5%AF%86%E8%97%8D%E5%9C%96.md) · [第一卷大綱](docs/00_%E4%BC%81%E5%8A%83%E5%A4%A7%E7%B6%B1/01_%E5%88%86%E5%8D%B7%E5%A4%A7%E7%B6%B1/01_%E7%AC%AC%E4%B8%80%E5%8D%B7_%E8%89%99%E5%BA%95%E7%A8%AE%E7%81%AB.md) |
-| 📕 名詞辭典 | [專有名詞辭典](docs/03_%E4%B8%96%E7%95%8C%E8%A7%80/05_%E5%B0%88%E6%9C%89%E5%90%8D%E8%A9%9E%E8%BE%AD%E5%85%B8.md) |
+| 🌐 世界觀 | [`00_world.md`](02_PROJECT_DATABASE/00_CORE/00_world.md) — 世界規則、OS 隱喻、資源循環 |
+| 👥 角色與陣營 | [`01_characters.md`](02_PROJECT_DATABASE/00_CORE/01_characters.md) · [`04_factions.md`](02_PROJECT_DATABASE/00_CORE/04_factions.md) |
+| 📖 劇情主線 | [`02_plot.md`](02_PROJECT_DATABASE/00_CORE/02_plot.md) · [`12_current_structure_plan.md`](02_PROJECT_DATABASE/00_CORE/12_current_structure_plan.md) |
+| 📕 名詞辭典 | [`03_glossary.md`](02_PROJECT_DATABASE/00_CORE/03_glossary.md) |
+| 📊 寫作進度 | [`進度儀表板.md`](02_PROJECT_DATABASE/02_DETAILS/進度儀表板.md) |
 
 ---
 

@@ -13,7 +13,7 @@
 - ✅ 完整的 AI 入口層（`.ai/SUMMARY.md` + `INDEX.md`）
 - ✅ 六道工作流覆蓋完整寫作生命週期（規劃→撰寫→融合→QA→世界觀→分卷）
 - ✅ 進度儀表板與伏筆追蹤系統
-- ✅ 封存區隔離（`99_ARCHIVE/`）
+- ✅ 封存區隔離（`04_ARCHIVE/`）
 
 **但仍存在可修復的結構性問題**，主要集中在「工作流內路徑斷裂」和「追蹤系統單點故障」兩個面向。
 
@@ -35,7 +35,7 @@ novel_ark-micro-civ/
 │   ├── 00_CORE/ (8 檔)      ← 核心設定
 │   ├── 01_RULES/ (8 檔)     ← 寫作規則
 │   ├── 02_DETAILS/          ← 補充細節 + 儀表板
-│   └── 99_ARCHIVE/          ← 封存區
+│   └── 04_ARCHIVE/          ← 封存區
 └── [Web Reader 相關檔案]
 ```
 
@@ -45,7 +45,7 @@ novel_ark-micro-civ/
 |---|---|
 | 兩層分離 | `01_NOVEL_CONTENT/` 與 `02_PROJECT_DATABASE/` 乾淨分離，正文不被設定污染 |
 | AI 入口 | `.ai/SUMMARY.md` 作為「記憶喚醒」入口非常好，可以在最少 token 消耗下啟動全局脈絡 |
-| 封存隔離 | `99_ARCHIVE/` 加 `no_crawl/` 明確禁止 AI 讀取，避免舊設定污染 |
+| 封存隔離 | `04_ARCHIVE/` 加 `no_crawl/` 明確禁止 AI 讀取，避免舊設定污染 |
 | 編號命名 | `00_CORE → 01_RULES → 02_DETAILS` 的編號順序暗示讀取優先級 |
 | 模板庫 | `02_DETAILS/03_templates/` 含 5 套寫作模板，直接可用 |
 
