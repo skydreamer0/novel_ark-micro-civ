@@ -27,5 +27,6 @@ For chapter production, use this local order:
 3. Read `STATE.md` 前 100 行（含 §1 快照、§1.3 下一章鉤子）→ 對應 `CANON_*.md` 段落 → 當前卷 `VOLUMES/volNN.md` → `STYLE.md`/`RULES.md` 重點段。
 4. Build the chapter plan or QA notes.
 5. Write or revise prose only after the continuity and style constraints are clear.
-6. Run the quality gate from `RULES.md` §6。
+6. Run the quality gate from `RULES.md` §6（含第四面牆 grep 檢查命令）。
+7. 完稿後同步更新 `STATE.md`（§1 快照、§4 時間線、§6 伏筆、§7 弧線）與 `.ai/SUMMARY.md`——僅當該章工作確實改變了連貫性。
 7. 完稿後同步更新 `STATE.md`（§1 快照、§4 時間線、§6 伏筆、§7 弧線）與 `.ai/SUMMARY.md`——僅當該章工作確實改變了連貫性。
