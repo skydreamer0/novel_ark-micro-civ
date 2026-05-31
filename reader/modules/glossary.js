@@ -7,6 +7,7 @@ import { getApiUrl } from './github.js';
 // === Configuration ===
 
 const SOURCES = [
+  { file: '02_PROJECT_DATABASE/_GLOSSARY.json', label: '核心名詞', isJson: true },
   { file: '02_PROJECT_DATABASE/CANON_characters.md', label: '角色', includeH3: true },
   { file: '02_PROJECT_DATABASE/CANON_world.md', label: '世界', includeH3: false },
   { file: '02_PROJECT_DATABASE/CANON_power.md', label: '力量', includeH3: false },
@@ -247,7 +248,11 @@ function showPopover(termEl) {
   const pop = ensurePopover();
   pop.querySelector('.gp-term').textContent = term;
   pop.querySelector('.gp-source').textContent = entry.source;
-  pop.querySelector('.gp-desc').textContent = entry.desc;
+  
+  // Prioritize display_text, fallback to desc
+  const description = entry.display_text || entry.desc || '';
+  pop.querySelector('.gp-desc').textContent = description;
+
   const link = pop.querySelector('.gp-link');
   link.href = `https://github.com/${config.githubOwner}/${config.githubRepo}/blob/${config.githubBranch}/${entry.file}`;
 

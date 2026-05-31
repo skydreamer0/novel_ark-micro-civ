@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>末日母艦 - 機密設定集</title>
+  <link rel="stylesheet" href="setting-page.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="dossier-container">
+    <header class="dossier-header">
+      <div class="header-main">
+        <h1>[ 核心機密檔案 ]</h1>
+        <p class="header-sub">MOTHERSHIP INTERNAL DATABASE / CLASSIFIED</p>
+      </div>
+      <a href="../index.html" class="back-btn">
+        <svg viewBox="0 0 24 24" width="20" height="20">
+          <path fill="currentColor" d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/>
+        </svg>
+        返回主機
+      </a>
+    </header>
+    
+    <div class="filter-bar">
+      <span class="filter-label">濾波篩選:</span>
+      <button class="filter-btn active" data-source="all">全部</button>
+      <button class="filter-btn" data-source="核心名詞">核心</button>
+      <button class="filter-btn" data-source="世界">世界</button>
+      <button class="filter-btn" data-source="角色">角色</button>
+      <button class="filter-btn" data-source="力量">力量</button>
+    </div>
+
+    <main id="dossier-grid" class="dossier-grid">
+      <div class="loading-state">正在同步資料庫信號...</div>
+    </main>
+
+    <footer class="dossier-footer">
+      <p>© ARK-SYSTEM AUDIT DIVISION. UNAUTHORIZED ACCESS IS A TERMINAL OFFENSE.</p>
+    </footer>
+  </div>
+  <script type="module" src="setting-page.js"></script>
+</body>
+</html>
