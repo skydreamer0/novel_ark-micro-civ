@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MOTHERSHIP INTERNAL DATABASE - CLASSIFIED</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050000;
+      --abyss-red: #800000;
+      --abyss-bright: #ff3333;
+      --text: #e0e0e0;
+      --text-dim: #888;
+      --border: #300000;
+      --glow: rgba(255, 0, 0, 0.2);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      background-image: 
+        radial-gradient(circle at 50% 50%, #1a0000 0%, #050000 100%),
+        repeating-linear-gradient(0deg, rgba(0,0,0,0.1) 0px, rgba(0,0,0,0.1) 1px, transparent 1px, transparent 2px);
+      background-size: cover, 100% 3px;
+      color: var(--text);
+      font-family: 'Noto Serif TC', serif;
+      margin: 0; padding: 20px;
+      min-height: 100vh;
+    }
+
+    /* 頂部警告 */
+    .header {
+      border-bottom: 2px solid var(--abyss-red);
+      padding-bottom: 20px;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 24px;
+      letter-spacing: 4px;
+      color: var(--abyss-bright);
+      text-shadow: 0 0 10px var(--abyss-red);
+    }
+    .header .status {
+      font-family: monospace;
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-top: 5px;
+    }
+
+    /* 檔案卡片網格 */
+    .dossier-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 30px;
+    }
+
+    /* 基礎卡片樣式 */
+    .card {
+      background: rgba(20, 0, 0, 0.6);
+      border: 1px solid var(--border);
+      padding: 25px;
+      position: relative;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .card:hover {
+      border-color: var(--abyss-red);
+      box-shadow: 0 0 20px var(--glow);
+    }
+
+    /* 標題與元數據 */
+    .title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: var(--abyss-bright);
+      border-left: 4px solid var(--abyss-red);
+      padding-left: 12px;
+    }
+    .meta {
+      font-family: monospace;
+      font-size: 11px;
+      color: var(--text-dim);
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      display: flex; gap: 15px;
+    }
+
+    /* 內容區 */
+    .content {
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* 特效 1: Mental-blur (未解鎖) */
+    .locked {
+      position: relative;
+    }
+    .locked .content {
+      filter: blur(8px);
+      user-select: none;
+      opacity: 0.4;
+      animation: dizzy 4s infinite alternate;
+    }
+    .locked::after {
+      content: '[ 數據過載：權限不足 ]';
+      position: absolute;
+      top: 60%; left: 50%;
+      transform: translate(-50%, -50%);
+      color: var(--abyss-bright);
+      font-weight: bold;
+      font-size: 14px;
+      text-shadow: 0 0 5px #000;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    @keyframes dizzy {
+      from { filter: blur(6px); transform: skewX(1deg); }
+      to { filter: blur(10px); transform: skewX(-1deg); text-shadow: 3px 0 5px red, -3px 0 5px blue; }
+    }
+
+    /* 特效 2: 階段式解鎖 (部分顯示) */
+    .stage-indicator {
+      display: flex; gap: 5px; margin-top: 15px;
+    }
+    .stage-dot {
+      width: 8px; height: 8px; background: var(--border);
+    }
+    .stage-dot.active { background: var(--abyss-bright); box-shadow: 0 0 5px var(--abyss-bright); }
+
+    /* 背景脈動 */
+    .card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle at center, var(--glow) 0%, transparent 70%);
+      opacity: 0; transition: opacity 0.5s;
+      pointer-events: none;
+    }
+    .card:hover::before { opacity: 1; animation: pulse 2s infinite; }
+    
+    @keyframes pulse {
+      0% { opacity: 0.2; }
+      50% { opacity: 0.4; }
+      100% { opacity: 0.2; }
+    }
+
+    .redacted { background: #300; color: #300; }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <h1>[ 核心機密檔案系統 ]</h1>
+    <div class="status">> 已偵測到載體進度：Ch.240 | 感知延遲：穩定 | 正在同步母巢數據...</div>
+  </header>
+
+  <div class="dossier-grid">
+
+    <!-- 範例 1: 已完全解鎖 (Markdown 標籤) -->
+    <article class="card">
+      <div class="meta">ID: WORLD_01 | UNLOCK: CH.20</div>
+      <div class="title">淨化塔</div>
+      <div class="content">
+        分布於各個艙段的大型淨化設施。不僅用於中和深淵污染，更是維持規則密度穩定的核心節點。靠近時，口中會泛起金屬鐵鏽味。
+      </div>
+    </article>
+
+    <!-- 範例 2: 未解鎖 (Markdown 標籤) -->
+    <article class="card locked">
+      <div class="meta">ID: SECRET_09 | UNLOCK: CH.350</div>
+      <div class="title">設計者遺囑</div>
+      <div class="content">
+        如果你能讀到這段文字，說明母艦的回收程序已經啟動。我留下的並非逃生艙，而是足以終結這場循環的終極矩陣... 它就藏在規則層的最深處。
+      </div>
+    </article>
+
+    <!-- 範例 3: 階層式解鎖 (JSON 結構) -->
+    <article class="card">
+      <div class="meta">ID: CHAR_01 | UNLOCK: MULTI-STAGE</div>
+      <div class="title">白扣 (Ark-Interface)</div>
+      <div class="content">
+        <div style="border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-bottom: 10px;">
+          <span style="color:var(--text-dim); font-size:12px;">[階段 1]</span> 身分不明的少女，被林燼在艙底救下。
+        </div>
+        <div style="border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-bottom: 10px;">
+          <span style="color:var(--text-dim); font-size:12px;">[階段 2]</span> 證實為高優化投放接口，汙染度持續上升，已成為主機通訊線路。
+        </div>
+        <div style="color:var(--abyss-bright); font-weight: bold;">
+          <span style="color:var(--text-dim); font-size:12px;">[階段 3]</span> 母巢回收意圖的關鍵載體，白扣上限 82%。目前與幽靈網絡共振。
+        </div>
+      </div>
+      <div class="stage-indicator">
+        <div class="stage-dot active"></div>
+        <div class="stage-dot active"></div>
+        <div class="stage-dot active"></div>
+        <div class="stage-dot"></div>
+      </div>
+    </article>
+
+  </div>
+
+  <div style="margin-top: 50px; text-align: center; font-family: monospace; color: var(--abyss-red); font-size: 12px; border-top: 1px solid #200; padding-top: 20px;">
+    WARNING: UNAUTHORIZED DATA EXTRACTION DETECTED. AUDIT DIVISION SIGNAL MAPPED.
+  </div>
+
+</body>
+</html>
