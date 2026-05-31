@@ -1,4 +1,4 @@
-const CACHE_NAME = 'mothership-reader-v14';
+const CACHE_NAME = 'mothership-reader-v15';
 const ASSETS = [
     './',
     './index.html',
@@ -21,7 +21,10 @@ const ASSETS = [
     './reader/modules/tts.js',
     './assets/favicon.png',
     './assets/icon-192.png',
-    './assets/icon-512.png'
+    './assets/icon-512.png',
+    './reader/setting-page.html',
+    './reader/setting-page.css',
+    './reader/setting-page.js'
 ];
 
 self.addEventListener('install', (e) => {
