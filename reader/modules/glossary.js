@@ -104,12 +104,17 @@ export async function loadGlossary() {
 
   try {
     const results = await Promise.all(
-      SOURCES.map(s => fetch(getApiUrl(s.file)).then(r => r.ok ? r.text() : null).catch(() => null))
+      SOURCES.map(s => fetch(getApiUrl(s.file)).then(r => r.ok ? (s.isJson ? r.json() : r.text()) : null).catch(() => null))
     );
     const all = [];
-    results.forEach((text, idx) => {
-      if (!text) return;
-      all.push(...parseSource(text, SOURCES[idx]));
+    results.forEach((data, idx) => {
+      if (!data) return;
+      const s = SOURCES[idx];
+      if (s.isJson) {
+        all.push(...data.map(it => ({ ...it, source: it.source || s.label, file: s.file })));
+      } else {
+        all.push(...parseSource(data, s));
+      }
     });
 
     // Deduplicate by term — keep the first definition
