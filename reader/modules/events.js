@@ -9,6 +9,7 @@ import { performFullTextSearch } from './search.js';
 import {
   toggleParaBookmark, addHighlight, renderAnnotPanel
 } from './annotation_render.js';
+import { setGlossaryEnabled } from './glossary.js';
 
 // --- Event Listeners ---
 
@@ -142,6 +143,15 @@ export function bindEvents() {
 
   // === Annotations ===
   bindAnnotationEvents();
+
+  // === Glossary toggle ===
+  if (els.glossaryToggle) {
+    // sync initial UI state
+    els.glossaryToggle.checked = localStorage.getItem('reader-glossary-enabled') !== 'false';
+    els.glossaryToggle.addEventListener('change', (e) => {
+      setGlossaryEnabled(e.target.checked);
+    });
+  }
 
   // Bottom Panel Interactions
   els.bottomPanelOverlay.onclick = () => toggleBottomPanel(false);

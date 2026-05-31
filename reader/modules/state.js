@@ -31,6 +31,9 @@ export const state = {
   paraObserver: null,
   lastVisiblePara: -1,
   annotPanelOpen: false,
+  glossary: new Map(),
+  glossaryRegex: null,
+  glossaryEnabled: true,
   theme: "light",
   fontSize: 1.125,
   tts: {
@@ -111,4 +114,7 @@ export const els = {
   resumeToastText: document.querySelector("#resume-toast .resume-text"),
   resumeJumpBtn: document.querySelector("#resume-toast .resume-jump"),
   resumeDismissBtn: document.querySelector("#resume-toast .resume-dismiss"),
+
+  // Glossary
+  glossaryToggle: document.getElementById("glossary-toggle"),
 };
