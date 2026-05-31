@@ -51,14 +51,21 @@ export async function loadChapter(path) {
 
     els.content.classList.remove("loading");
     els.content.style.opacity = "0";
+    els.content.style.transform = "translateY(8px)";
     requestAnimationFrame(() => {
-      els.content.style.transition = "opacity 0.6s ease-out";
+      els.content.style.transition = "opacity 0.5s ease-out, transform 0.5s var(--ease-spring)";
       els.content.style.opacity = "1";
+      els.content.style.transform = "translateY(0)";
     });
     setTimeout(() => manageFocus(), 100);
 
     updateNavButtons();
     updateBookmarkUI();
+
+    if (!state.readChapters.has(path)) {
+      state.readChapters.add(path);
+      saveState("readChapters");
+    }
 
     const urlObj = new URL(window.location);
     urlObj.searchParams.set("file", path);
@@ -89,12 +96,25 @@ export function manageFocus() {
 
 const marked = window.marked;
 
+// Skip drop-cap when first character is a CJK opening punctuation or quote
+const DROPCAP_SKIP = /^[「『"'（(《〈【\[—…\s]/;
+
 export function createChapterSection(index, title, rawText) {
   const section = document.createElement("section");
   section.className = "chapter-section";
   section.dataset.chapterIndex = index;
   section.dataset.chapterPath = state.files[index].path;
   section.innerHTML = marked.parse(rawText);
+
+  // Mark first prose paragraph for drop-cap (skip headings, blockquotes, hr-led blocks)
+  const firstP = section.querySelector(":scope > p");
+  if (firstP) {
+    const text = firstP.textContent.trim();
+    if (text && !DROPCAP_SKIP.test(text)) {
+      firstP.classList.add("has-dropcap");
+    }
+  }
+
   return section;
 }
 
@@ -194,6 +214,22 @@ export function updateReadingProgress() {
     state.scrollPositions[firstPath] = scrollTop;
   }
 
+  // Scroll-aware top-nav: hide on scroll down, show on scroll up or near top
+  const delta = scrollTop - state.lastScrollY;
+  if (scrollTop < 80) {
+    if (state.navHidden) {
+      document.body.classList.remove("nav-hidden");
+      state.navHidden = false;
+    }
+  } else if (delta > 6 && !state.navHidden) {
+    document.body.classList.add("nav-hidden");
+    state.navHidden = true;
+  } else if (delta < -6 && state.navHidden) {
+    document.body.classList.remove("nav-hidden");
+    state.navHidden = false;
+  }
+  state.lastScrollY = scrollTop;
+
   updateVisibleChapterTitle();
 }
 
@@ -223,9 +259,15 @@ export function updateVisibleChapterTitle() {
     updateBookmarkUI();
     updateActiveSidebarItem();
 
+    const path = state.files[idx].path;
+    if (!state.readChapters.has(path)) {
+      state.readChapters.add(path);
+      saveState("readChapters");
+    }
+
     const urlObj = new URL(window.location);
-    urlObj.searchParams.set("file", state.files[idx].path);
-    window.history.replaceState({ path: state.files[idx].path }, "", urlObj);
+    urlObj.searchParams.set("file", path);
+    window.history.replaceState({ path }, "", urlObj);
     saveState("lastRead");
   }
 }

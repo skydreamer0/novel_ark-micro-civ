@@ -54,6 +54,9 @@ export function loadState() {
     const savedBookmarks = JSON.parse(localStorage.getItem("reader-bookmarks") || "[]");
     state.bookmarks = new Set(savedBookmarks);
 
+    const savedRead = JSON.parse(localStorage.getItem("reader-read") || "[]");
+    state.readChapters = new Set(savedRead);
+
     const savedScroll = JSON.parse(localStorage.getItem("reader-scroll-pos") || "{}");
     state.scrollPositions = savedScroll;
 
@@ -70,6 +73,8 @@ export function saveState(key) {
   try {
     if (key === "bookmarks") {
       localStorage.setItem("reader-bookmarks", JSON.stringify([...state.bookmarks]));
+    } else if (key === "readChapters") {
+      localStorage.setItem("reader-read", JSON.stringify([...state.readChapters]));
     } else if (key === "scroll") {
       localStorage.setItem("reader-scroll-pos", JSON.stringify(state.scrollPositions));
     } else if (key === "theme") {

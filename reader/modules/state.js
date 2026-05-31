@@ -22,7 +22,10 @@ export const state = {
   filterText: "",
   collapsedFolders: new Set(),
   bookmarks: new Set(),
+  readChapters: new Set(),
   scrollPositions: {},
+  lastScrollY: 0,
+  navHidden: false,
   theme: "light",
   fontSize: 1.125,
   tts: {

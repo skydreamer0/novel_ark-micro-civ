@@ -52,10 +52,20 @@ export function renderSidebar() {
       const btn = document.createElement("button");
       btn.className = "chapter-btn";
       btn.dataset.path = file.path;
-      btn.textContent = file.title;
+      if (state.readChapters.has(file.path)) btn.dataset.read = "1";
+
+      const label = document.createElement("span");
+      label.className = "chapter-btn-label";
+      label.textContent = file.title;
+      btn.appendChild(label);
+
       if (state.bookmarks.has(file.path)) {
-        btn.innerHTML += `<span style="color:var(--accent);margin-left:auto">⚑</span>`;
+        const flag = document.createElement("span");
+        flag.className = "chapter-btn-flag";
+        flag.textContent = "⚑";
+        btn.appendChild(flag);
       }
+
       btn.onclick = () => loadChapter(file.path);
       if (state.activeIndex >= 0 && state.files[state.activeIndex]?.path === file.path) {
         btn.classList.add("active");
@@ -78,6 +88,7 @@ export function updateActiveSidebarItem() {
   if (!next) return;
 
   next.classList.add("active");
+  if (state.readChapters.has(activeFile.path)) next.dataset.read = "1";
   next.scrollIntoView({ block: "center", behavior: "smooth" });
 }
 
