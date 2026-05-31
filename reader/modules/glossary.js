@@ -57,8 +57,18 @@ function pickCoreTerm(cleaned) {
 }
 
 function extractDescAfter(lines, startIdx) {
-  // Find first non-empty, non-heading paragraph (or first list item) within
-  // the next ~20 lines.
+  // Pass 1: Look for explicit TL;DR tags for readers
+  for (let i = startIdx + 1; i < Math.min(lines.length, startIdx + 20); i++) {
+    const line = lines[i].trim();
+    if (line.startsWith('#')) break;
+    if (line.startsWith('> [快讀]') || line.startsWith('> [核心]')) {
+      let s = line.replace(/^>\s*\[(快讀|核心)\][:：]?\s*/, '').trim();
+      if (s.length > DESC_MAX) s = s.slice(0, DESC_MAX - 1) + '…';
+      return s;
+    }
+  }
+
+  // Pass 2: Fallback to first non-empty paragraph (legacy logic)
   for (let i = startIdx + 1; i < Math.min(lines.length, startIdx + 25); i++) {
     const line = lines[i].trim();
     if (!line) continue;
