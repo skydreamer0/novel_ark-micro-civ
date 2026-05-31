@@ -26,6 +26,11 @@ export const state = {
   scrollPositions: {},
   lastScrollY: 0,
   navHidden: false,
+  annotations: {},
+  resume: null,
+  paraObserver: null,
+  lastVisiblePara: -1,
+  annotPanelOpen: false,
   theme: "light",
   fontSize: 1.125,
   tts: {
@@ -94,4 +99,16 @@ export const els = {
   panelFontInc: document.getElementById("panel-font-inc"),
   panelFontDec: document.getElementById("panel-font-dec"),
   panelFontLabel: document.getElementById("panel-font-label"),
+
+  // Annotations UI
+  annotToggle: document.getElementById("annot-toggle"),
+  annotPanel: document.getElementById("annot-panel"),
+  annotPanelOverlay: document.querySelector(".annot-panel-overlay"),
+  annotPanelBody: document.querySelector(".annot-panel-body"),
+  annotPanelClose: document.querySelector(".annot-panel-close"),
+  highlightFab: document.getElementById("highlight-fab"),
+  resumeToast: document.getElementById("resume-toast"),
+  resumeToastText: document.querySelector("#resume-toast .resume-text"),
+  resumeJumpBtn: document.querySelector("#resume-toast .resume-jump"),
+  resumeDismissBtn: document.querySelector("#resume-toast .resume-dismiss"),
 };

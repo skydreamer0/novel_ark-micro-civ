@@ -4,6 +4,10 @@ import { stopTTS } from './tts.js';
 import { countWords } from './sort.js';
 import { saveState } from './config.js';
 import { updateActiveSidebarItem, updateNavButtons, updateBookmarkUI } from './sidebar.js';
+import {
+  renderAnnotPanel, applyHighlightsToSection, observeParas, showResumeToastIfAny
+} from './annotation_render.js';
+import { indexParagraphs } from './annotation_render.js';
 
 // --- Chapter Loading & Rendering ---
 
@@ -72,6 +76,11 @@ export async function loadChapter(path) {
     window.history.replaceState({ path }, "", urlObj);
     saveState("lastRead");
 
+    // Annotations integration
+    observeParas(section, path);
+    renderAnnotPanel(path);
+    showResumeToastIfAny(path, title);
+
     if (window.innerWidth <= 1024) {
       els.app.classList.add("sidebar-collapsed");
     }
@@ -114,6 +123,11 @@ export function createChapterSection(index, title, rawText) {
       firstP.classList.add("has-dropcap");
     }
   }
+
+  // Index paragraphs + apply saved highlights for this chapter
+  const path = state.files[index].path;
+  indexParagraphs(section, path);
+  applyHighlightsToSection(section, path);
 
   return section;
 }
@@ -185,6 +199,9 @@ export async function appendNextChapter() {
     });
 
     state.loadedChapters.push(nextIndex);
+    // Highlights for the appended chapter are applied inside createChapterSection
+    // but the IntersectionObserver still tracks paragraphs of the first chapter
+    // (resume target = first loaded chapter), so we don't re-observe here.
 
     appendSentinel();
 

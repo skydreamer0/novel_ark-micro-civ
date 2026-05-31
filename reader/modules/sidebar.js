@@ -1,6 +1,7 @@
 import { state, els } from './state.js';
 import { loadChapter } from './reader.js';
 import { renderSearchResults } from './search.js';
+import { chapterHasAny } from './annotations.js';
 
 // --- Sidebar Rendering ---
 
@@ -59,7 +60,7 @@ export function renderSidebar() {
       label.textContent = file.title;
       btn.appendChild(label);
 
-      if (state.bookmarks.has(file.path)) {
+      if (state.bookmarks.has(file.path) || chapterHasAny(file.path)) {
         const flag = document.createElement("span");
         flag.className = "chapter-btn-flag";
         flag.textContent = "⚑";

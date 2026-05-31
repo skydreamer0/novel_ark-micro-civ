@@ -6,6 +6,7 @@ import { loadFileList } from './github.js';
 import { renderSidebar } from './sidebar.js';
 import { loadChapter } from './reader.js';
 import { state } from './state.js';
+import { loadAnnotations } from './annotations.js';
 
 // --- Main ---
 
@@ -13,6 +14,7 @@ export async function init() {
   await loadExternalConfig();
   inferGithubRepo();
   loadState();
+  loadAnnotations();
   applyTheme();
   applyFontSize();
   bindEvents();

@@ -1,9 +1,11 @@
-const CACHE_NAME = 'mothership-reader-v12';
+const CACHE_NAME = 'mothership-reader-v13';
 const ASSETS = [
     './',
     './index.html',
     './reader/styles.css',
     './reader/app.js',
+    './reader/modules/annotations.js',
+    './reader/modules/annotation_render.js',
     './reader/modules/config.js',
     './reader/modules/events.js',
     './reader/modules/gestures.js',
