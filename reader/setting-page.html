@@ -30,11 +30,11 @@
     
     <div class="filter-bar">
       <span class="filter-label">濾波篩選:</span>
-      <button class="filter-btn active" data-source="all">全部</button>
-      <button class="filter-btn" data-source="核心名詞">核心</button>
-      <button class="filter-btn" data-source="世界">世界</button>
-      <button class="filter-btn" data-source="角色">角色</button>
-      <button class="filter-btn" data-source="力量">力量</button>
+      <button class="filter-btn active" data-category="all">全部</button>
+      <button class="filter-btn" data-category="核心名詞">核心</button>
+      <button class="filter-btn" data-category="世界">世界</button>
+      <button class="filter-btn" data-category="角色">角色</button>
+      <button class="filter-btn" data-category="力量">力量</button>
     </div>
 
     <main id="dossier-grid" class="dossier-grid">
@@ -45,6 +45,7 @@
       <p>© ARK-SYSTEM AUDIT DIVISION. UNAUTHORIZED ACCESS IS A TERMINAL OFFENSE.</p>
     </footer>
   </div>
-  <script type="module" src="setting-page.js"></script>
+  <!-- Legacy entry point retained for rollback: setting-page.js -->
+  <script type="module" src="dossier.js"></script>
 </body>
 </html>
