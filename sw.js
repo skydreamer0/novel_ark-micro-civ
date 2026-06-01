@@ -1,4 +1,4 @@
-const CACHE_NAME = 'mothership-reader-v15';
+const CACHE_NAME = 'mothership-reader-v16';
 const ASSETS = [
     './',
     './index.html',
@@ -19,11 +19,25 @@ const ASSETS = [
     './reader/modules/state.js',
     './reader/modules/theme.js',
     './reader/modules/tts.js',
+    // Glossary / Dossier refactor modules
+    './reader/modules/progress.js',
+    './reader/modules/glossary-data.js',
+    './reader/modules/glossary-rules.js',
+    './reader/modules/glossary-popover.js',
+    './reader/modules/dossier-data.js',
+    './reader/modules/dossier-parser.js',
+    './reader/modules/dossier-merge.js',
+    './reader/modules/dossier-lock.js',
+    './reader/modules/dossier-render.js',
+    './reader/modules/dossier-sync.js',
+    './reader/modules/dossier-memory.js',
+    './reader/dossier.js',
     './assets/favicon.png',
     './assets/icon-192.png',
     './assets/icon-512.png',
     './reader/setting-page.html',
     './reader/setting-page.css',
+    // Legacy entry point retained for rollback (still cached on purpose):
     './reader/setting-page.js'
 ];
 
