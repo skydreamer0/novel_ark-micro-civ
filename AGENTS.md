@@ -43,3 +43,40 @@ Canonical triage roles mapped to default strings. See `docs/agents/triage-labels
 ### Domain docs
 
 Multi-context layout using `CONTEXT-MAP.md`. See `docs/agents/domain.md`.
+
+## Encoding policy (UTF-8 for Traditional Chinese content)
+
+This repository contains **Traditional Chinese** content across `01_NOVEL_CONTENT/`, `02_PROJECT_DATABASE/`, `.ai/`, `.agent/`, and chapter files. All text files MUST be saved as **UTF-8** without BOM to avoid mojibake.
+
+### Hard rules for agents
+
+1. **Do NOT use PowerShell `>`, `>>`, `Out-File`, or `Set-Content` to write Chinese text.** PowerShell 5.1's default encoding is the #1 source of mojibake in this stack.
+2. **Do NOT use `Get-Content`, `cat`, or `type` to verify Chinese content.** Terminal display lies about encoding.
+3. **Prefer Python `pathlib` for reading/writing Chinese files** with explicit `encoding="utf-8"`.
+4. **If PowerShell is required, use `pwsh` (PowerShell 7+), not `powershell.exe` (5.1).** PowerShell 7's UTF-8 support is significantly better.
+5. **Verify file content using UTF-8 aware reading** (e.g. `Path(p).read_text(encoding="utf-8")` or the `Read` tool, not terminal output).
+6. **Git commits**: CRLF/LF warnings are expected on Windows; do not change line endings to "fix" them.
+7. **VS Code**: `"files.encoding": "utf8"`, `"files.autoGuessEncoding": false`.
+
+### Recommended Python write
+
+```python
+from pathlib import Path
+Path(file).write_text(content, encoding="utf-8")
+```
+
+### Recommended Python read
+
+```python
+from pathlib import Path
+text = Path(file).read_text(encoding="utf-8")
+```
+
+### Recovery from mojibake
+
+If a file already shows mojibake (`??`, `�`, or garbled CJK), do **not** try to "fix" it via the same broken write path. Use Python to:
+
+1. Read raw bytes with `Path(p).read_bytes()`.
+2. Detect encoding with `chardet` or `charset-normalizer` if needed.
+3. Decode → re-encode as UTF-8 and rewrite.
+4. Verify with a second Python read.
