@@ -153,6 +153,8 @@ function checkPublicDossier() {
     return;
   }
 
+  const seenIds = new Map();
+
   for (const file of jsonFiles) {
     let text;
     try {
@@ -178,6 +180,15 @@ function checkPublicDossier() {
 
     const items = normalizeDossierItems(parsed, file);
     items.forEach((item, index) => {
+      if (item.id) {
+        const previous = seenIds.get(item.id);
+        if (previous) {
+          errors.push(`${file}[${index}] duplicates id "${item.id}" already used by ${previous}.`);
+        } else {
+          seenIds.set(item.id, `${file}[${index}]`);
+        }
+      }
+
       for (const field of REQUIRED_DOSSIER_FIELDS) {
         if (!(field in item)) {
           errors.push(`${file}[${index}] missing required field: ${field}`);
@@ -244,6 +255,15 @@ function checkPwaBaseline() {
     }
     if (!sw.includes("reader/public-dossier")) {
       warnings.push("sw.js does not cache reader/public-dossier assets yet; Phase 1/3 should add them after the data layer exists.");
+    }
+
+    if (existsSync(PUBLIC_DOSSIER_DIR)) {
+      for (const file of walk(PUBLIC_DOSSIER_DIR).filter((entry) => entry.endsWith(".json"))) {
+        const assetPath = `./${file}`;
+        if (!sw.includes(assetPath)) {
+          warnings.push(`sw.js cache list missing public dossier asset: ${assetPath}`);
+        }
+      }
     }
   }
 }

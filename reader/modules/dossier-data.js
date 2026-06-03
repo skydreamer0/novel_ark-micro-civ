@@ -1,7 +1,8 @@
 // reader/modules/dossier-data.js
 
 const PUBLIC_DOSSIER_SOURCES = [
-    './public-dossier/index.json'
+    './public-dossier/index.json',
+    './public-dossier/characters.json'
 ];
 
 function normalizePublicDossierPayload(payload, sourcePath) {
