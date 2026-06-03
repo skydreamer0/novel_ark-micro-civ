@@ -1,0 +1,142 @@
+[
+  {
+    "id": "l-compute",
+    "title": "L-Compute",
+    "category": "資源",
+    "unlockChapter": 5,
+    "spoilerLevel": "safe",
+    "visibility": "partial",
+    "teaser": "低頻算力。它不發光，卻支撐最早的火種活下去。",
+    "readerText": "L-Compute 像文明主機裡最底層的柴火。它來自勞作、秩序、基礎供奉與微小居民的日常運轉。數值不高，卻穩定；沒有它，任何更亮的信仰都只是短暫火花。",
+    "lockedText": "低頻算力資料尚未同步。",
+    "sourceCanon": [
+      "CANON_power.md#L-Compute 生產與消耗"
+    ]
+  },
+  {
+    "id": "h-compute",
+    "title": "H-Compute",
+    "category": "資源",
+    "unlockChapter": 17,
+    "spoilerLevel": "safe",
+    "visibility": "restricted",
+    "teaser": "高頻算力。當信仰不再只是祈禱，它會變成回流的力量。",
+    "readerText": "H-Compute 不是單純能量，更像一群人把恐懼、信任與求生意志壓成同一個頻率。它回流時，林燼能感覺到某種不屬於自己一個人的重量正在推著他往前。",
+    "lockedText": "高頻回流資料需要更高同步率。",
+    "sourceCanon": [
+      "CANON_power.md#H-Compute 信仰回流機制"
+    ]
+  },
+  {
+    "id": "rule-fragments",
+    "title": "規則碎片",
+    "category": "資源",
+    "unlockChapter": 24,
+    "spoilerLevel": "safe",
+    "visibility": "partial",
+    "teaser": "從外域與裂縫裡撿回來的，不只是材料，還有被撕碎的規則。",
+    "readerText": "規則碎片不像礦石那樣安靜。它們帶著外域的殘留邏輯，會刮傷儀器，也會刮傷判斷。能用的人把它稱為資源，不能用的人通常只留下污染紀錄。",
+    "lockedText": "碎片樣本仍在隔離。",
+    "sourceCanon": [
+      "CANON_power.md#規則碎片獲取與消耗"
+    ]
+  },
+  {
+    "id": "double-refinement",
+    "title": "雙層煉化",
+    "category": "事件",
+    "unlockChapter": 24,
+    "spoilerLevel": "safe",
+    "visibility": "restricted",
+    "teaser": "外域資源先被現實處理，再被體內文明重新咀嚼。",
+    "readerText": "雙層煉化讓同一份資源經過兩次命運：一次在母艦的工業與黑市流程裡，一次在林燼體內的文明主機裡。前者把它變成可交易的東西，後者把它變成能反咬制度的東西。",
+    "lockedText": "煉化流程圖尚未解封。",
+    "sourceCanon": [
+      "CANON_power.md#雙層煉化"
+    ]
+  },
+  {
+    "id": "pollution-grade",
+    "title": "污染分級",
+    "category": "資源",
+    "unlockChapter": 61,
+    "spoilerLevel": "spoiler-gated",
+    "visibility": "partial",
+    "teaser": "污染不是髒，而是規則開始不聽話。",
+    "readerText": "污染分級是母艦用來決定處理成本的表格，也是底層用來判斷自己還能不能活的噩耗。級別越高，淨化越貴，等待越短，旁人的距離也越遠。",
+    "lockedText": "污染分級表尚未同步。",
+    "sourceCanon": [
+      "CANON_power.md#污染與淨化成本"
+    ]
+  },
+  {
+    "id": "rule-fuel",
+    "title": "規則燃料",
+    "category": "資源",
+    "unlockChapter": 69,
+    "spoilerLevel": "spoiler-gated",
+    "visibility": "restricted",
+    "teaser": "不是所有燃料都用來點火，有些是用來維持世界不崩。",
+    "readerText": "規則燃料在方舟裡很少被普通人看見，卻會出現在每一次高風險調度背後。它不是煤，也不是電，而是一種能讓特定規則短暫保持穩定的代價。",
+    "lockedText": "燃料轉化資料已封存。",
+    "sourceCanon": [
+      "CANON_power.md#規則燃料轉化效率"
+    ]
+  },
+  {
+    "id": "origin-population",
+    "title": "第一次人口注入",
+    "category": "事件",
+    "unlockChapter": 5,
+    "spoilerLevel": "safe",
+    "visibility": "partial",
+    "teaser": "火種醒來後，文明不是憑空完整，它需要第一批願意活下去的人。",
+    "readerText": "第一次人口注入發生得很安靜。沒有宣言，沒有旗幟，只有一群微小生命被放進尚未成形的世界裡。他們不知道自己將成為文明，只知道黑暗裡終於有了可以聚集的地方。",
+    "lockedText": "人口注入紀錄尚未解封。",
+    "sourceCanon": [
+      "CANON_power.md#起源與人口增長"
+    ]
+  },
+  {
+    "id": "akasha-furnace",
+    "title": "阿卡夏熔爐",
+    "category": "力量",
+    "unlockChapter": 120,
+    "spoilerLevel": "spoiler-gated",
+    "visibility": "blackbox",
+    "teaser": "信仰回流被工業化後，火焰不再只像神蹟，也像流水線。",
+    "readerText": "阿卡夏熔爐把信仰、記憶與製造流程壓進同一座看不見的爐膛。它不是單純生產人口，而是在文明主機內部建立一種更冷、更穩、更可怕的持續性。",
+    "lockedText": "熔爐資料黑箱封存。請勿越權讀取。",
+    "sourceCanon": [
+      "CANON_power.md#阿卡夏熔爐"
+    ]
+  },
+  {
+    "id": "projection-population",
+    "title": "投放人口",
+    "category": "事件",
+    "unlockChapter": 91,
+    "spoilerLevel": "spoiler-gated",
+    "visibility": "restricted",
+    "teaser": "有人出生，有人被製造，也有人被投放到命運已標價的位置。",
+    "readerText": "投放人口的名冊不像戶籍，更像貨單。每個人都帶著用途、等級與被安排好的去向。最殘酷的地方在於，他們仍然會害怕、會記得、會以為自己只是普通地活著。",
+    "lockedText": "投放名冊仍在灰霧中。",
+    "sourceCanon": [
+      "CANON_power.md#投放人口體系"
+    ]
+  },
+  {
+    "id": "reverse-input-protocol",
+    "title": "反向寫入協議",
+    "category": "力量",
+    "unlockChapter": 118,
+    "spoilerLevel": "spoiler-gated",
+    "visibility": "blackbox",
+    "teaser": "當被記錄的人開始改寫記錄，系統第一次聽見了回聲。",
+    "readerText": "反向寫入不是單純反抗命令，而是把原本只能承受的規則往回推。它讓某些被判定為結果的東西重新變成過程，也讓制度第一次必須面對來自底層的回寫。",
+    "lockedText": "反向寫入協議不可讀。同步權限不足。",
+    "sourceCanon": [
+      "CANON_power.md#聖城反向寫入與共振屏蔽"
+    ]
+  }
+]

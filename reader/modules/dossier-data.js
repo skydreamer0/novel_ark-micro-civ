@@ -3,7 +3,8 @@
 const PUBLIC_DOSSIER_SOURCES = [
     './public-dossier/index.json',
     './public-dossier/characters.json',
-    './public-dossier/world.json'
+    './public-dossier/world.json',
+    './public-dossier/power.json'
 ];
 
 function normalizePublicDossierPayload(payload, sourcePath) {
