@@ -2,7 +2,8 @@
 
 const PUBLIC_DOSSIER_SOURCES = [
     './public-dossier/index.json',
-    './public-dossier/characters.json'
+    './public-dossier/characters.json',
+    './public-dossier/world.json'
 ];
 
 function normalizePublicDossierPayload(payload, sourcePath) {

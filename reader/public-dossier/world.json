@@ -1,0 +1,142 @@
+[
+  {
+    "id": "permission-gates",
+    "title": "權限閘門",
+    "category": "世界",
+    "unlockChapter": 7,
+    "spoilerLevel": "safe",
+    "visibility": "partial",
+    "teaser": "門不只擋住通道，也擋住底層人對上層的想像。",
+    "readerText": "方舟的閘門會讀身份、債務、工種與風控分。它們開啟時像恩賜，關閉時像判決。底層居民很早就明白：真正的牆不一定有形，有時只是一行『權限不足』。",
+    "lockedText": "通行紀錄未解封。請提高同步率。",
+    "sourceCanon": [
+      "CANON_world.md#通行制度與層級移動"
+    ]
+  },
+  {
+    "id": "cooling-layer",
+    "title": "冷凝層",
+    "category": "地點",
+    "unlockChapter": 13,
+    "spoilerLevel": "safe",
+    "visibility": "partial",
+    "teaser": "潮濕、低溫、管線聲不斷的夾層，許多路線在這裡變得不合法。",
+    "readerText": "冷凝層不像居住區，也不像工業區。它是方舟用來散熱、輸送與藏污的夾縫。水氣掛在管壁上，腳步聲會被金屬放大；想穿過這裡的人，最好知道哪一盞燈代表巡檢剛離開。",
+    "lockedText": "冷凝層路徑圖仍在同步。",
+    "sourceCanon": [
+      "CANON_world.md#冷凝層通行細則"
+    ]
+  },
+  {
+    "id": "deep-abyss",
+    "title": "深淵環境",
+    "category": "世界",
+    "unlockChapter": 61,
+    "spoilerLevel": "spoiler-gated",
+    "visibility": "restricted",
+    "teaser": "母艦之外不是空白，而是一片連規則都會被磨損的黑。",
+    "readerText": "深淵沒有穩定的方向感。距離會失真，時間會變薄，儀器回傳的數字像在自我懷疑。從方舟望出去，它是航路；對進入者而言，它更像一場沒有岸的低語。",
+    "lockedText": "深淵環境資料需要更高同步率。",
+    "sourceCanon": [
+      "CANON_world.md#深淵環境"
+    ]
+  },
+  {
+    "id": "navigation-center",
+    "title": "航路調度中心",
+    "category": "地點",
+    "unlockChapter": 61,
+    "spoilerLevel": "spoiler-gated",
+    "visibility": "restricted",
+    "teaser": "所有航路都要被批准，所有偏航都會被記錄。",
+    "readerText": "航路調度中心的螢幕從不真正熄滅。它計算方舟如何在深淵邊緣移動，也計算哪一段艙區的燃料、配額與人命可以被壓到最低。那裡的人很少談遠方，只談誤差。",
+    "lockedText": "航路調度資料封存中。",
+    "sourceCanon": [
+      "CANON_world.md#躍遷引擎與導航"
+    ]
+  },
+  {
+    "id": "rule-fog",
+    "title": "規則霧",
+    "category": "世界",
+    "unlockChapter": 62,
+    "spoilerLevel": "spoiler-gated",
+    "visibility": "partial",
+    "teaser": "看不見的污染，會讓工具、身體與判斷一起長出偏差。",
+    "readerText": "規則霧不是普通濕氣。它會附在接口、符片、皮膚與記憶邊緣，讓原本可靠的東西慢慢不可靠。老維修工說，霧重的地方不要相信第一眼，也不要相信第二次讀數。",
+    "lockedText": "霧場濃度資料未完成同步。",
+    "sourceCanon": [
+      "CANON_world.md#規則霧與清霧技術"
+    ]
+  },
+  {
+    "id": "dead-cabin",
+    "title": "死艙",
+    "category": "地點",
+    "unlockChapter": 63,
+    "spoilerLevel": "spoiler-gated",
+    "visibility": "blackbox",
+    "teaser": "被判定失去維持價值的艙段，仍可能留下還沒被系統承認的聲音。",
+    "readerText": "死艙不是立刻死亡的地方，而是被宣布不再值得拯救的地方。燈會一盞盞暗下去，配給會停止，通道會被重寫。最可怕的是，艙內的人往往比外面更晚知道自己已被放棄。",
+    "lockedText": "死艙判定流程已封存。請勿越權讀取。",
+    "sourceCanon": [
+      "CANON_world.md#死艙與熵行者"
+    ]
+  },
+  {
+    "id": "henghang-church",
+    "title": "恆航教",
+    "category": "勢力",
+    "unlockChapter": 91,
+    "spoilerLevel": "spoiler-gated",
+    "visibility": "partial",
+    "teaser": "它教人把航行稱為信仰，也教人把服從誤認為被保護。",
+    "readerText": "恆航教的祈禱詞裡，母艦永遠正確，航路永遠神聖。對害怕明天的人來說，這種信仰能讓恐懼變得有形；對掌權者來說，有形的恐懼比較容易被安排。",
+    "lockedText": "宗教檔案尚未取得授權。",
+    "sourceCanon": [
+      "CANON_world.md#恆航教與地下信仰"
+    ]
+  },
+  {
+    "id": "audit-bureau",
+    "title": "母艦審計司",
+    "category": "勢力",
+    "unlockChapter": 7,
+    "spoilerLevel": "safe",
+    "visibility": "restricted",
+    "teaser": "掛在每個人頭頂的帳本，也是方舟最冷的刀。",
+    "readerText": "審計司不需要親自出現在底層，也能讓底層安靜。它的通知會抵達終端、工牌、配給口與醫療窗口。當一個名字被標紅，周圍的人會先退半步，因為沒有人想被一起記進帳裡。",
+    "lockedText": "審計司內部資料不可讀。",
+    "sourceCanon": [
+      "CANON_world.md#母艦審計司"
+    ]
+  },
+  {
+    "id": "iron-rust-gang",
+    "title": "鐵鏽幫",
+    "category": "勢力",
+    "unlockChapter": 1,
+    "spoilerLevel": "safe",
+    "visibility": "partial",
+    "teaser": "艙底幫派，靠暴力、債務與恐懼在破管線間生根。",
+    "readerText": "鐵鏽幫不是方舟最強的勢力，卻是很多底層人最先遇見的惡意。他們熟悉每條漏水管、每個監控死角，也熟悉如何把一個人的欠款變成跪下的理由。",
+    "lockedText": "幫派地盤資料尚未同步。",
+    "sourceCanon": [
+      "CANON_world.md#鐵鏽幫"
+    ]
+  },
+  {
+    "id": "gray-chain",
+    "title": "灰鏈",
+    "category": "勢力",
+    "unlockChapter": 70,
+    "spoilerLevel": "spoiler-gated",
+    "visibility": "restricted",
+    "teaser": "把不能見光的物資、身份與消息洗到能上桌的暗線。",
+    "readerText": "灰鏈不承認自己是組織，只說自己是通道。有人用它洗白配給，有人用它換路線，有人用它把一段不該存在的情報送到該聽見的人手裡。通道不問善惡，只問代價。",
+    "lockedText": "灰鏈節點資料仍被遮蔽。",
+    "sourceCanon": [
+      "CANON_world.md#灰鏈"
+    ]
+  }
+]
