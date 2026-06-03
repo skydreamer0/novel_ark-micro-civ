@@ -396,10 +396,11 @@
 
 ## 寫作前必讀
 
-0. `02_PROJECT_DATABASE/02_PROJECT_DATABASE/STATE.md §1+§3+§9` — 截至第143章的後續架構總整理
+0. `02_PROJECT_DATABASE/STATE.md §1+§3+§10` — 截至 Vol 9 完稿的後續架構總整理（含 §10.1 Vol 9 末→Vol 10 開頭關鍵決策清單）
 1. `02_PROJECT_DATABASE/STYLE.md §7` — 理想正文的感性範例（開場/對話/情緒/戰鬥的感覺）
 2. `02_PROJECT_DATABASE/STYLE.md §6` — 各角色對話差異（防止角色聽起來像同一個人）
 3. `02_PROJECT_DATABASE/RULES.md §6` — **寫完一章後強制跑完六關檢查**才能視為完成稿
+4. **Vol 10 subagent 必讀** `.agent/briefs/vol10_ruins_brief.md` — 守夜人廢墟探索指南（含三幕骨架+Cluster 建議+POV 分配+台詞範本+品質閘）
 
 ## 寫作規則（核心濃縮）
 
