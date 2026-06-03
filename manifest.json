@@ -1,10 +1,24 @@
 {
-  "name": "Mothership: Inner Micro-Civilization",
-  "short_name": "Mothership",
+  "id": "./",
+  "scope": "./",
+  "lang": "zh-Hant",
+  "dir": "ltr",
+  "name": "末日母艦：我的體內有個微縮文明",
+  "short_name": "末日母艦",
   "description": "末日母艦：我的體內有個微縮文明 — 賽博龐克 × 文明養成 × 陰謀揭露網路小說",
-  "categories": ["entertainment", "books", "utilities"],
-  "start_url": "./index.html",
+  "categories": [
+    "entertainment",
+    "books",
+    "utilities"
+  ],
+  "start_url": "./index.html?source=pwa",
   "display": "standalone",
+  "display_override": [
+    "window-controls-overlay",
+    "standalone",
+    "minimal-ui",
+    "browser"
+  ],
   "background_color": "#050000",
   "theme_color": "#800000",
   "orientation": "portrait",
@@ -12,12 +26,14 @@
     {
       "src": "./assets/icon-192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "./assets/icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }

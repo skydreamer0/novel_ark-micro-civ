@@ -27,13 +27,14 @@ export function evaluateLockState(item, globalProgress) {
 
     if (isLocked) {
         supplemental = '';
+        const lockedText = item.lockedText || item.teaser || '';
         if (visibility === 'blackbox') {
             title = '<span aria-label="Blackbox file locked">██████</span>';
-            details = '<span aria-label="Blackbox file locked">■■■ UNAUTHORIZED ACCESS ■■■</span>';
+            details = lockedText || '<span aria-label="Blackbox file locked">■■■ UNAUTHORIZED ACCESS ■■■</span>';
         } else if (visibility === 'restricted') {
-            details = '<span class="redaction-block" aria-label="redacted">████</span> <span class="redaction-block" aria-label="redacted">████</span> <span class="redaction-block" aria-label="redacted">████</span>';
+            details = lockedText || '<span class="redaction-block" aria-label="redacted">████</span> <span class="redaction-block" aria-label="redacted">████</span> <span class="redaction-block" aria-label="redacted">████</span>';
         } else if (visibility === 'partial') {
-            details = 'Progress further to unlock details.';
+            details = lockedText || '同步率不足。檔案內容尚未解封。';
         }
     }
 

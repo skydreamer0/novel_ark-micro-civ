@@ -3,6 +3,30 @@ import { readFileSync } from "node:fs";
 const indexHtml = readFileSync("index.html", "utf8");
 const swJs = readFileSync("sw.js", "utf8");
 
+const manifest = JSON.parse(readFileSync("manifest.json", "utf8"));
+const settingPageHtml = readFileSync("reader/setting-page.html", "utf8");
+
+for (const field of ["id", "scope", "lang", "dir", "display_override"]) {
+  assert(field in manifest, `manifest.json must include ${field} for installable PWA metadata`);
+}
+
+assert(
+  Array.isArray(manifest.icons) && manifest.icons.some((icon) => String(icon.purpose || "").includes("maskable")),
+  'manifest.json must include at least one maskable icon purpose',
+);
+
+for (const snippet of [
+  '<link rel="manifest" href="../manifest.json">',
+  '<link rel="apple-touch-icon" href="../assets/icon-192.png">',
+  '<meta name="mobile-web-app-capable" content="yes">',
+  '<meta name="apple-mobile-web-app-capable" content="yes">',
+  '<meta name="apple-mobile-web-app-title"',
+  '<meta name="theme-color"',
+  'viewport-fit=cover',
+]) {
+  assert(settingPageHtml.includes(snippet), `reader/setting-page.html must include PWA/mobile snippet: ${snippet}`);
+}
+
 function assert(condition, message) {
   if (!condition) {
     throw new Error(message);
@@ -46,6 +70,11 @@ assert(
 assert(
   swJs.includes("e.request.mode === 'navigate'"),
   "service worker must treat navigations separately so index.html is not stuck cache-first",
+);
+
+assert(
+  swJs.includes("/reader/public-dossier/") && swJs.includes("stale-while-revalidate"),
+  "service worker must handle public dossier JSON with stale-while-revalidate caching",
 );
 
 console.log("reader asset checks passed");
