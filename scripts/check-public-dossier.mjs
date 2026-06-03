@@ -258,8 +258,8 @@ for (const warning of warnings) console.warn(`WARN ${warning}`);
 for (const error of errors) console.error(`ERROR ${error}`);
 
 if (errors.length > 0) {
-  console.error(`Public dossier Phase 0 check failed with ${errors.length} error(s) and ${warnings.length} warning(s).`);
+  console.error(`Public dossier check failed with ${errors.length} error(s) and ${warnings.length} warning(s).`);
   process.exit(1);
 }
 
-console.log(`Public dossier Phase 0 check passed with ${warnings.length} warning(s).`);
+console.log(`Public dossier check passed with ${warnings.length} warning(s).`);

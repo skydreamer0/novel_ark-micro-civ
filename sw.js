@@ -1,4 +1,4 @@
-const CACHE_NAME = 'mothership-reader-v16';
+const CACHE_NAME = 'mothership-reader-v17';
 const ASSETS = [
     './',
     './index.html',
@@ -32,6 +32,7 @@ const ASSETS = [
     './reader/modules/dossier-sync.js',
     './reader/modules/dossier-memory.js',
     './reader/dossier.js',
+    './reader/public-dossier/index.json',
     './assets/favicon.png',
     './assets/icon-192.png',
     './assets/icon-512.png',
