@@ -34,6 +34,17 @@
 3. **補齊手機 PWA 驗收**：讓主閱讀器與機密設定頁都能在手機上安裝、離線開啟、正常閱讀。
 4. **建立中文安全流程**：所有繁中 `.md`、`.json`、`.html`、`.css`、`.js` 變更都用 UTF-8 驗證，避免 mojibake。
 
+## 2.1 分階段處理原則
+
+這個改善案必須拆成多個小 PR 處理，不能一次把資料層、UI、PWA、README、驗收腳本全部混在同一個變更中。
+
+- **一次只做一個階段**：每次開始前先確認目前要做的是 Phase 0、1、2、3、4 或 5。
+- **每階段都要有停止點**：完成該階段後先提交、建立 PR、回報驗收結果，再進下一階段。
+- **禁止跨階段偷改**：例如 Phase 1 只建立資料層與最小讀取切換，不順手重寫大量 UI；Phase 3 只補 PWA，不順手新增劇透條目。
+- **每階段都跑 UTF-8 檢查**：若掃到既有非本階段問題，只記錄 warning，不把不相關正文或封存檔納入同一 PR。
+- **任何會影響讀者畫面的階段都要截圖**：若環境可執行瀏覽器，手機寬度與桌機寬度各留一張；若環境不可行，在 PR 測試區明確標註限制。
+
+
 ## 3. 非目標
 
 - 不修改小說章節正文。
@@ -155,49 +166,148 @@ reader/setting-page.html（沉浸式機密檔案）
 - 檔案內文行長控制在手機可讀範圍，避免橫向捲動。
 - 返回閱讀器按鈕固定在安全區域內。
 
-## 7. 實作階段
+## 7. 分階段實作路線
 
-### Phase 0 — 基準檢查與中文安全
+> 執行規則：每個 Phase 都是獨立交付單位。除非使用者明確要求，否則 agent 完成一個 Phase 後必須停止，不得自動進入下一個 Phase。
 
-- [ ] 用 `python3` 讀取目標中文檔，確認 UTF-8 可解碼。
-- [ ] 用 `git status --short` 確認沒有不相關變更。
-- [ ] 禁止使用 PowerShell 5.1 重導向寫中文檔。
-- [ ] 若在 Windows 執行，優先使用 `pwsh`，中文內容仍以 Python `pathlib` 寫入。
+### Phase 0 — 基準檢查與防呆（文件／腳本，不改 UI）
 
-### Phase 1 — 讀者資料層切分
+**目的**：先把現況量清楚，避免後續一邊改 UI 一邊發現資料源、PWA、UTF-8 問題。
 
-- [ ] 新增 `reader/public-dossier/`。
-- [ ] 建立 `index.json` 與第一批 20–40 個安全條目。
-- [ ] 每個條目標註 `unlockChapter`、`spoilerLevel`、`sourceCanon`。
-- [ ] 前端讀取來源改為 `reader/public-dossier/*.json`，暫停直接對外顯示 `CANON_*.md` 原文。
+**允許修改**：
 
-### Phase 2 — 條目轉寫與劇透審核
+- `docs/plans/` 下的計畫文件。
+- 新增或修改檢查腳本，例如 `scripts/check-public-dossier.mjs`。
+- 必要時補 README 的「如何跑檢查」一句話；不改讀者介面。
 
-- [ ] 將角色、世界、力量三類各挑 10 個高頻條目重寫為讀者語氣。
-- [ ] 將尚未揭露內容改寫為遮蔽文字或傳聞語氣。
-- [ ] 建立禁語檢查：`角色弧線|伏筆|作者|AI|後續揭露|設定上|V7`。
-- [ ] 以章節進度測試：Ch.1、Ch.30、Ch.90、Ch.175 各看到不同揭露層。
+**交付物**：
 
-### Phase 3 — PWA 補強
+- [ ] 明確列出現有前端仍直接讀 `CANON_*` 的位置。
+- [ ] 明確列出目前 PWA 已有項目與缺口。
+- [ ] 建立或規劃 UTF-8／BOM／禁語檢查命令。
+- [ ] 記錄既有 BOM 或 mojibake 問題，但不在本階段修正文。
 
-- [ ] 補 `reader/setting-page.html` 的 manifest、apple icon、theme-color、viewport-fit meta。
-- [ ] 更新 `manifest.json` 的手機顯示名稱、maskable icon、scope/id/lang。
-- [ ] 檢查 `sw.js` 快取清單是否涵蓋新增公開資料源。
-- [ ] 加入離線/快取失敗時的讀者友善訊息。
+**停止點**：提交 Phase 0 PR，回報「下一階段要不要開始建立讀者公開資料層」。
 
-### Phase 4 — 手機閱讀體驗
+### Phase 1 — 讀者公開資料層最小切片（資料，不大改視覺）
 
-- [ ] 手機單欄卡片、44px 觸控按鈕、安全區域 padding。
-- [ ] 設定頁與閱讀器返回路徑一致。
-- [ ] 檢查 iOS Safari standalone、Android Chrome install prompt。
-- [ ] 若有可執行瀏覽器環境，對首頁與設定頁截圖留存。
+**目的**：先切斷「讀者端直接顯示 AI/作者內部 CANON 原文」的主要風險。
 
-### Phase 5 — 文件與維護流程
+**允許修改**：
 
-- [ ] README 將 `設定資料庫` 區塊分成「讀者公開檔案」與「作者內部正典」。
-- [ ] 新增一段 contributor note：公開檔案不得直接貼 CANON 原文。
-- [ ] 每次新增條目前，先填 `sourceCanon`，再寫 `readerText`。
-- [ ] 每次 PR 都跑 UTF-8 驗證與禁語檢查。
+- 新增 `reader/public-dossier/index.json`。
+- 新增第一批 8–12 個安全條目，只選 Ch.1–Ch.30 已揭露內容。
+- 修改 `reader/modules/dossier-data.js`，讓前端優先讀公開資料層；必要時保留舊來源為開發 fallback，但預設不公開顯示 `CANON_*` 長文。
+- 更新 `sw.js` 快取新增的公開資料源。
+
+**禁止修改**：
+
+- 不重寫大量 CSS。
+- 不新增 Ch.30 之後才揭露的真相條目。
+- 不改小說正文與 `CANON_*` 主檔。
+
+**交付物**：
+
+- [ ] 公開資料條目具備 `id`、`title`、`category`、`unlockChapter`、`spoilerLevel`、`teaser`、`readerText`、`lockedText`、`sourceCanon`。
+- [ ] UI 能顯示公開資料層條目。
+- [ ] 舊 CANON 原文不再作為讀者端主要顯示內容。
+- [ ] 禁語檢查不命中公開資料層。
+
+**停止點**：提交 Phase 1 PR，請使用者確認「讀者口吻」是否正確，再進 Phase 2。
+
+### Phase 2 — 條目轉寫與劇透審核（內容，不碰 PWA）
+
+**目的**：把機密檔案從設定卡改成小說世界內可讀文本。
+
+**允許修改**：
+
+- `reader/public-dossier/*.json`。
+- 必要的資料驗證腳本。
+
+**分批方式**：
+
+- Phase 2A：角色檔案 10 則。
+- Phase 2B：世界／地點／勢力檔案 10 則。
+- Phase 2C：力量／資源／事件檔案 10 則。
+
+每個子階段都可獨立 PR；如果條目文字量大，優先拆成 2A、2B、2C。
+
+**驗收重點**：
+
+- [ ] 條目像「母艦檔案／灰市情報／裂縫口供」，不是作者設定。
+- [ ] 未揭露內容使用遮蔽、錯誤碼、傳聞或同步率不足提示。
+- [ ] Ch.1、Ch.30、Ch.90、Ch.175 測試能看到不同揭露層。
+
+**停止點**：每個 2A/2B/2C PR 後停下，讓使用者抽查語氣與劇透程度。
+
+### Phase 3 — PWA 安裝與離線能力（平台，不重寫內容）
+
+**目的**：補齊手機可安裝、可離線開啟、設定頁同樣具備 PWA meta 的缺口。
+
+**允許修改**：
+
+- `manifest.json`。
+- `index.html`。
+- `reader/setting-page.html`。
+- `sw.js`。
+- 必要時更新 `scripts/check-reader-assets.mjs`。
+
+**交付物**：
+
+- [ ] `manifest.json` 補 `id`、`scope`、`lang`、`dir`、maskable icon purpose。
+- [ ] 設定頁補 manifest、apple touch icon、theme-color、standalone 相關 meta。
+- [ ] Service Worker 快取公開資料源與設定頁必要資產。
+- [ ] 離線時首頁與設定頁不空白，至少顯示上次快取或友善錯誤。
+
+**停止點**：提交 Phase 3 PR，附手機/PWA 檢查結果或環境限制說明。
+
+### Phase 4 — 手機閱讀體驗與沉浸式 UI（視覺，不改資料規則）
+
+**目的**：處理「手機可以看」與「像讀者用的機密檔案」的實際介面問題。
+
+**允許修改**：
+
+- `reader/setting-page.css`。
+- `reader/setting-page.html` 的語意結構。
+- 必要的 `reader/dossier.js` 或 render module 小幅調整。
+
+**交付物**：
+
+- [ ] 360px 寬度無橫向捲動。
+- [ ] 觸控按鈕高度至少 44px。
+- [ ] 無 hover-only 功能；遮蔽與解鎖互動支援 tap。
+- [ ] 返回閱讀器按鈕在 safe area 內可操作。
+- [ ] 若可行，提供手機寬度截圖。
+
+**停止點**：提交 Phase 4 PR，請使用者確認視覺風格再擴充動畫或特效。
+
+### Phase 5 — 文件、維護流程與長期防回歸
+
+**目的**：避免後續又把 AI 內部設定直接放回讀者端。
+
+**允許修改**：
+
+- `README.md`。
+- `docs/plans/` 或 `docs/agents/` 相關維護說明。
+- 檢查腳本與 CI 說明。
+
+**交付物**：
+
+- [ ] README 分清楚「讀者公開檔案」與「作者內部正典」。
+- [ ] contributor note 明確禁止公開資料層直接貼 `CANON_*` 原文。
+- [ ] 每次新增條目前需填 `sourceCanon`，再寫 `readerText`。
+- [ ] 文件列出 UTF-8／禁語／PWA asset 檢查命令。
+
+**停止點**：提交 Phase 5 PR，整個改善案才算進入維護狀態。
+
+### 建議執行順序
+
+1. **Phase 0**：補防呆與檢查，不碰 UI。
+2. **Phase 1**：建立最小公開資料層，先解決 AI 設定外露問題。
+3. **Phase 2A–2C**：分批轉寫條目，讓使用者可逐批審口吻。
+4. **Phase 3**：補 PWA 安裝與離線。
+5. **Phase 4**：調手機 UI 與沉浸感。
+6. **Phase 5**：補 README 與長期防回歸。
 
 ## 8. 驗收標準
 
@@ -244,21 +354,13 @@ rg -n "角色弧線|伏筆|作者|AI|後續揭露|設定上|V7" reader/public-do
 node scripts/check-reader-assets.mjs
 ```
 
-## 10. 推薦優先順序
+## 10. 下一步建議
 
-1. **先做資料層切分**：這是避免劇透與 AI 設定感的根本。
-2. **再做 30 個核心條目轉寫**：讓讀者立刻感覺機密檔案變成小說體驗的一部分。
-3. **同步補 PWA meta 與 sw 快取**：確保手機可以安裝與離線開啟。
-4. **最後補 README 與驗收腳本**：避免後續 agent 又把 CANON 原文直接公開。
+下一個 PR 建議只做 **Phase 0**，不要直接進入大改：
 
-## 11. 第一個可交付 PR 建議
+- 新增 `scripts/check-public-dossier.mjs` 的雛形，先定義必要欄位、禁語與 UTF-8/BOM 檢查。
+- 掃描現有讀者端資料來源，列出仍直接讀 `CANON_*` 的位置。
+- 掃描 PWA 缺口，確認 `manifest.json`、`sw.js`、`reader/setting-page.html` 需要補哪些項目。
+- 記錄既有 BOM 問題為 warning，不在同一 PR 修正文。
 
-第一個 PR 應控制範圍，避免一次改太大：
-
-- 新增 `reader/public-dossier/index.json` 與 10 個安全條目。
-- 修改 `reader/modules/dossier-data.js`，優先讀公開資料源。
-- 補 `reader/setting-page.html` PWA meta。
-- 更新 `sw.js` 快取新增資料源。
-- 新增 `scripts/check-public-dossier.mjs` 檢查禁語與必要欄位。
-
-完成後再開第二個 PR 擴充條目與手機 UI 細節。
+Phase 0 通過後，再開 Phase 1：新增 `reader/public-dossier/index.json` 與 8–12 個 Ch.1–Ch.30 安全條目，並讓設定頁優先讀公開資料層。
