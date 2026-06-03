@@ -1,4 +1,4 @@
-const CACHE_NAME = 'mothership-reader-v20';
+const CACHE_NAME = 'mothership-reader-v21';
 const ASSETS = [
     './',
     './index.html',
@@ -65,10 +65,9 @@ self.addEventListener('activate', (e) => {
 });
 
 self.addEventListener('fetch', (e) => {
-    // Cache-first strategy for static assets, Network-first for MD files?
-    // Actually, Stale-While-Revalidate is best for content that might update.
-
     const url = new URL(e.request.url);
+    const isPublicDossier = url.pathname.includes('/reader/public-dossier/') && url.pathname.endsWith('.json');
+    const isMarkdownOrGithub = url.pathname.endsWith('.md') || url.hostname.includes('github');
 
     if (e.request.mode === 'navigate') {
         e.respondWith(
@@ -85,24 +84,28 @@ self.addEventListener('fetch', (e) => {
         return;
     }
 
-    // If it's an MD file or API call to GitHub
-    if (url.pathname.endsWith('.md') || url.hostname.includes('github')) {
+    // Reader content and public dossier data use stale-while-revalidate so
+    // mobile/PWA users get an offline response while the cache refreshes.
+    if (isMarkdownOrGithub || isPublicDossier) {
         e.respondWith(
             caches.open(CACHE_NAME).then(async (cache) => {
                 const cachedResponse = await cache.match(e.request);
-                const fetchPromise = fetch(e.request).then((networkResponse) => {
-                    cache.put(e.request, networkResponse.clone());
-                    return networkResponse;
-                });
+                const fetchPromise = fetch(e.request)
+                    .then((networkResponse) => {
+                        cache.put(e.request, networkResponse.clone());
+                        return networkResponse;
+                    })
+                    .catch(() => cachedResponse);
                 return cachedResponse || fetchPromise;
             })
         );
-    } else {
-        // For app shell (HTML, CSS, JS)
-        e.respondWith(
-            caches.match(e.request).then((response) => {
-                return response || fetch(e.request);
-            })
-        );
+        return;
     }
+
+    // App shell assets are cache-first with a network fallback.
+    e.respondWith(
+        caches.match(e.request).then((response) => {
+            return response || fetch(e.request);
+        })
+    );
 });

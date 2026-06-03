@@ -227,6 +227,9 @@ function checkPwaBaseline() {
     for (const field of ["id", "scope", "lang", "dir"]) {
       if (!(field in manifest)) warnings.push(`manifest.json should add mobile/PWA field: ${field}`);
     }
+    if (!Array.isArray(manifest.display_override) || !manifest.display_override.includes("standalone")) {
+      warnings.push('manifest.json should include display_override with "standalone".');
+    }
     const icons = Array.isArray(manifest.icons) ? manifest.icons : [];
     if (!icons.some((icon) => String(icon.purpose || "").includes("maskable"))) {
       warnings.push('manifest.json should add an icon with purpose including "maskable".');
