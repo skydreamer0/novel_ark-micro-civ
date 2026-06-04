@@ -8,6 +8,14 @@ export const config = {
   configFile: "reader/config.json",
 };
 
+export const PERSISTED_KEYS = {
+  theme: 'reader-theme',
+  fontSize: 'reader-font-size',
+  ttsRate: 'reader-tts-rate',
+  ttsStartMode: 'reader-tts-start-mode',
+  glossaryEnabled: 'reader-glossary-enabled',
+};
+
 export const CONFIG_KEYS = [
   "githubOwner",
   "githubRepo",

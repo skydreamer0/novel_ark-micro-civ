@@ -46,8 +46,11 @@ async function loadPublicDossierSource(sourcePath) {
     return normalizePublicDossierPayload(payload, sourcePath).map(mapPublicDossierItem);
 }
 
+const sessionCache = new Map();
+
 /**
  * Loads reader-facing dossier data.
+ * Caches result per session so subsequent calls skip fetching.
  *
  * Phase 1 intentionally stops exposing raw author-canon markdown and the
  * internal glossary as the primary setting-page data source. Canon files remain
@@ -56,6 +59,10 @@ async function loadPublicDossierSource(sourcePath) {
  * @returns {Promise<Array>} The normalized public dossier items.
  */
 export async function loadFullDossier() {
+    if (sessionCache.has('mergedDossier')) {
+        return sessionCache.get('mergedDossier');
+    }
+
     const allItems = [];
 
     for (const sourcePath of PUBLIC_DOSSIER_SOURCES) {
@@ -67,9 +74,12 @@ export async function loadFullDossier() {
         }
     }
 
-    return allItems.sort((a, b) => {
+    const sorted = allItems.sort((a, b) => {
         const priorityDiff = (a.display_priority || 0) - (b.display_priority || 0);
         if (priorityDiff !== 0) return priorityDiff;
         return String(a.title || a.term || '').localeCompare(String(b.title || b.term || ''), 'zh-Hant');
     });
+
+    sessionCache.set('mergedDossier', sorted);
+    return sorted;
 }

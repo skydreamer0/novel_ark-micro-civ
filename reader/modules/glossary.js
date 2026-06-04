@@ -111,7 +111,6 @@ function parseSource(text, source) {
 export async function loadGlossary() {
   state.glossary = new Map();
   state.glossaryRegex = null;
-  state.glossaryEnabled = localStorage.getItem('reader-glossary-enabled') !== 'false';
 
   try {
     const results = await Promise.all(

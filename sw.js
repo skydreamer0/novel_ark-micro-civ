@@ -1,9 +1,16 @@
-const CACHE_NAME = 'mothership-reader-v21';
+const CACHE_NAME = 'mothership-reader-v22';
 const ASSETS = [
     './',
     './index.html',
-    './reader/styles.css',
+    './reader/base.css',
+    './reader/sidebar.css',
+    './reader/reader.css',
+    './reader/panel.css',
+    './reader/annotations.css',
+    './reader/glossary.css',
+    './vendor/marked.min.js',
     './reader/app.js',
+    './reader/error-boundary.js',
     './reader/modules/annotations.js',
     './reader/modules/annotation_render.js',
     './reader/modules/glossary.js',
@@ -12,6 +19,7 @@ const ASSETS = [
     './reader/modules/gestures.js',
     './reader/modules/github.js',
     './reader/modules/main.js',
+    './reader/modules/navigator.js',
     './reader/modules/reader.js',
     './reader/modules/search.js',
     './reader/modules/sidebar.js',
@@ -21,9 +29,6 @@ const ASSETS = [
     './reader/modules/tts.js',
     // Glossary / Dossier refactor modules
     './reader/modules/progress.js',
-    './reader/modules/glossary-data.js',
-    './reader/modules/glossary-rules.js',
-    './reader/modules/glossary-popover.js',
     './reader/modules/dossier-data.js',
     './reader/modules/dossier-parser.js',
     './reader/modules/dossier-merge.js',

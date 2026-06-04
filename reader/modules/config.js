@@ -1,4 +1,6 @@
-import { config, CONFIG_KEYS, state } from './state.js';
+import { config, CONFIG_KEYS, state, PERSISTED_KEYS } from './state.js';
+
+const SCHEMA_VERSION = 1;
 
 // --- Initialization ---
 
@@ -60,10 +62,23 @@ export function loadState() {
     const savedScroll = JSON.parse(localStorage.getItem("reader-scroll-pos") || "{}");
     state.scrollPositions = savedScroll;
 
-    state.theme = localStorage.getItem("reader-theme") ||
-      (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    for (const [key, lsKey] of Object.entries(PERSISTED_KEYS)) {
+      const raw = localStorage.getItem(lsKey);
+      if (raw === null) continue;
+      if (key === 'fontSize' || key === 'ttsRate') {
+        state[key] = parseFloat(raw);
+      } else if (key === 'glossaryEnabled') {
+        state[key] = raw !== 'false';
+      } else {
+        state[key] = raw;
+      }
+    }
 
-    state.fontSize = parseFloat(localStorage.getItem("reader-font-size") || "1.125");
+    if (!localStorage.getItem(PERSISTED_KEYS.theme)) {
+      state.theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+
+    localStorage.setItem('reader-schema-version', String(SCHEMA_VERSION));
   } catch (e) {
     console.warn("Failed to load state", e);
   }
@@ -77,14 +92,12 @@ export function saveState(key) {
       localStorage.setItem("reader-read", JSON.stringify([...state.readChapters]));
     } else if (key === "scroll") {
       localStorage.setItem("reader-scroll-pos", JSON.stringify(state.scrollPositions));
-    } else if (key === "theme") {
-      localStorage.setItem("reader-theme", state.theme);
-    } else if (key === "fontSize") {
-      localStorage.setItem("reader-font-size", state.fontSize);
     } else if (key === "lastRead") {
       if (state.activeIndex >= 0) {
         localStorage.setItem("reader-last-read", state.files[state.activeIndex].path);
       }
+    } else if (key in PERSISTED_KEYS) {
+      localStorage.setItem(PERSISTED_KEYS[key], String(state[key]));
     }
   } catch (e) {
     console.warn("Failed to save state", e);

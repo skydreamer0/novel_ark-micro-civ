@@ -1,5 +1,5 @@
 import { state, els } from './state.js';
-import { loadChapter } from './reader.js';
+import { loadChapter } from './navigator.js';
 import { renderSearchResults } from './search.js';
 import { chapterHasAny } from './annotations.js';
 
