@@ -138,5 +138,145 @@
     "sourceCanon": [
       "CANON_characters.md#方岩"
     ]
+  },
+  {
+    "id": "he-tie",
+    "title": "賀鐵",
+    "category": "角色",
+    "unlockChapter": 8,
+    "spoilerLevel": "safe",
+    "visibility": "partial",
+    "teaser": "在底層，他賣的不是貨，是門路。",
+    "readerText": "賀鐵不屬於任何幫派，卻認識所有幫派的價格。他的訊息比物資更貴，因為在黑市裡，知道正確的路比擁有正確的貨更難活下去。",
+    "lockedText": "同步率不足。此人仍在黑市檔案夾深處。",
+    "sourceCanon": [
+      "CANON_characters.md#賀鐵"
+    ]
+  },
+  {
+    "id": "chen-yan",
+    "title": "陳硯",
+    "category": "角色",
+    "unlockChapter": 167,
+    "spoilerLevel": "spoiler-gated",
+    "visibility": "restricted",
+    "teaser": "他報名的時候，就知道自己不會完整回來。",
+    "readerText": "陳硯的轉化紀錄像一條逐步縮減的折線——每一次數字下降，代表某一塊情感區塊被燃料取代。他不後悔，因為燃料點燃的東西比情緒更有用。到了V8末，他已經能同時處理戰術資料與方岩留下的適配參數，成為聖城最獨特的資產。",
+    "lockedText": "同步率不足。轉化紀錄已封存。",
+    "sourceCanon": [
+      "CANON_characters.md#陳硯"
+    ]
+  },
+  {
+    "id": "chu-chan",
+    "title": "楚蟬",
+    "category": "角色",
+    "unlockChapter": 241,
+    "spoilerLevel": "spoiler-gated",
+    "visibility": "restricted",
+    "teaser": "她不是工具。她只是還沒有人告訴她，她比工具更貴重。",
+    "readerText": "楚蟬的編號是C-001，她一直被視為戰鬥型製造人口。直到邊界外的指令碎片出現，她才知道自己身上那份無法解釋的0.3%差異，是設計者留給製造人口的保險。當林燼失靈時，她可以繞過回收系統，直接聯繫設計者備份。",
+    "lockedText": "同步率不足。製造人口檔案受限。",
+    "sourceCanon": [
+      "CANON_characters.md#楚蟬"
+    ]
+  },
+  {
+    "id": "blank-position",
+    "title": "空白位置",
+    "category": "角色",
+    "unlockChapter": 314,
+    "spoilerLevel": "spoiler-gated",
+    "visibility": "blackbox",
+    "teaser": "她不是被困在那裡——她是在等人走到這一步。",
+    "readerText": "空白位置在410年前第二載體偏航時就存在了。她自願停機，在核心層外圍留下路標，等待下一台文明主機。這些年她看著偏航者一個接一個消失，直到林燼的訊號穿過邊界。她的意識以規則層投影存在於髒區，持有守夜人底層編碼——那是探索守夜人廢墟的鑰匙。",
+    "lockedText": "同步率嚴重不足。邊界外訊號無法解析。",
+    "sourceCanon": [
+      "CANON_characters.md#空白位置"
+    ]
+  },
+  {
+    "id": "survival-captain",
+    "title": "生存派艦長",
+    "category": "角色",
+    "unlockChapter": 261,
+    "spoilerLevel": "spoiler-gated",
+    "visibility": "restricted",
+    "teaser": "艦長的第一規則是：讓船活到明天。第二條規則：如果與第一條衝突，執行第一條。",
+    "readerText": "生存派艦長的名字在母艦調度表上被標記為「忠誠度不足」。對他而言，忠誠不是對命令，而是對艦上三千名等著活過下一週的船員。他與聖城的合作始於交易，終於信任——在第四方戰爭爆發時，他選擇留下，成為聖城在外部世界的第一個支柱。",
+    "lockedText": "同步率不足。外圍艦隊通訊頻道尚未建立。",
+    "sourceCanon": [
+      "CANON_characters.md#生存派艦長"
+    ]
+  },
+  {
+    "id": "shen-mi",
+    "title": "沈彌",
+    "category": "角色",
+    "unlockChapter": 312,
+    "spoilerLevel": "spoiler-gated",
+    "visibility": "blackbox",
+    "teaser": "她的船是從一個死去文明的骨頭裡挖出來的。她繼承的不只是船，是債務。",
+    "readerText": "沈彌的艦隊漂流了兩千年，從守夜人母文明自我毀滅前逃出。她知道第四方的存在，也知道母艦只是更大的廢墟中的一小塊。當林燼的訊號抵達時，她看見的不是陌生人，而是第二個正在從廢墟裡爬出來的文明。",
+    "lockedText": "同步率嚴重不足。灰燼聯邦通訊協議無法解析。",
+    "sourceCanon": [
+      "CANON_characters.md#沈彌"
+    ]
+  },
+  {
+    "id": "li-an",
+    "title": "黎黯",
+    "category": "角色",
+    "unlockChapter": 241,
+    "spoilerLevel": "spoiler-gated",
+    "visibility": "restricted",
+    "teaser": "她把秘密寫進只有自己看得懂的編號裡——不是不信任人，是不信任系統。",
+    "readerText": "黎黯的手工密碼本不是加密工具，而是抵抗被制度記錄的方式。她隨身帶著三份副本：一份給自己，一份留艙底，一份燒給信任的人。在搜尋隊出發前，她在地圖空白處畫了一行小字：如果沒回來，密碼本第三頁有最後一條訊息。",
+    "lockedText": "同步率不足。搜尋隊通訊紀錄加密中。",
+    "sourceCanon": [
+      "CANON_characters.md#黎黯"
+    ]
+  },
+  {
+    "id": "qin-yan",
+    "title": "秦艷",
+    "category": "角色",
+    "unlockChapter": 151,
+    "spoilerLevel": "spoiler-gated",
+    "visibility": "partial",
+    "teaser": "她不站隊——她只確保所有線路都有人在聽。",
+    "readerText": "秦艷的工作是把訊息送到該送的地方，不問善惡，不問代價。她在審計司的通訊紀錄裡被標為「噪聲源」，因為她的訊號永遠夾在管線雜音裡，不足以定罪，卻足以讓知情者知道通道還活著。",
+    "lockedText": "同步率不足。通訊節點已靜默。",
+    "sourceCanon": [
+      "CANON_characters.md#秦艷"
+    ]
+  },
+  {
+    "id": "lin-jin",
+    "title": "林燼",
+    "category": "角色",
+    "unlockChapter": 1,
+    "spoilerLevel": "safe",
+    "visibility": "partial",
+    "teaser": "末日母艦底層維修工，眼神像疲憊但隨時能暴起的野狗。",
+    "readerText": "林燼最初只是第九維修段一個欠稅的維修工。他學會的第一件事不是戰鬥，是計算——誰欠誰、誰能殺、誰值得活到明天。後來他發現自己體內有一座文明主機。那時他還沒決定要用它來做什麼，但系統已經決定要消滅他。",
+    "lockedText": "同步率不足。主機核心檔案待解鎖。",
+    "sourceCanon": [
+      "CANON_characters.md#林燼"
+    ]
+  },
+  {
+    "id": "su-lan",
+    "title": "蘇嵐",
+    "category": "角色",
+    "unlockChapter": 1,
+    "spoilerLevel": "safe",
+    "visibility": "partial",
+    "teaser": "技術駭客，左手無名指缺一截。她的價值在於所有人都低估了她握住的後門。",
+    "readerText": "蘇嵐不屬於任何陣營——她屬於那些還沒崩潰的線路。她的弟弟是企業教育艙裡的人質，她的灰色API後門是她唯一的籌碼。她記得住每一條她修復過的通訊鏈，也記得住每一個因為通訊斷裂而死的人。",
+    "lockedText": "同步率不足。通訊紀錄加密中。",
+    "sourceCanon": [
+      "CANON_characters.md#蘇嵐"
+    ]
   }
 ]

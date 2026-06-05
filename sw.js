@@ -41,6 +41,7 @@ const ASSETS = [
     './reader/public-dossier/characters.json',
     './reader/public-dossier/world.json',
     './reader/public-dossier/power.json',
+    './reader/public-dossier/volumes.json',
     './assets/favicon.png',
     './assets/icon-192.png',
     './assets/icon-512.png',
