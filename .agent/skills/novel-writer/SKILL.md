@@ -216,3 +216,9 @@ scenarios:
 - v3.0（2026-05-17）：動態錨點改造、統一角色名、新增衝突弧線與視角示範引用
 - v2.0：第 120 章完稿後更新
 - v1.0：初始版本
+
+## Work principle
+
+Less attention taken. More value delivered.
+
+Reduce unnecessary questions and narration; deliver useful, verified results. Preserve required approvals, risk disclosures, and blocker reports. This principle does not expand authorization or override safety and project rules.

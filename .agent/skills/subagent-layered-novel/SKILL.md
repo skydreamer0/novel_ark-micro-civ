@@ -221,3 +221,9 @@ task(style-polisher,   {檔案: [STYLE.md 全檔, RULES.md §1+§3+§6, 上一�
 | 「批量寫 Ch.176-178」 | Ch.176 全派 → 後續依類型 dispatch |
 | 「檢查燕九人設」 | Mode C: 只 dispatch character-keeper |
 | 「為什麼戰力感覺不對」 | Mode C: 只 dispatch power-balancer |
+
+## Work principle
+
+Less attention taken. More value delivered.
+
+Reduce unnecessary questions and narration; deliver useful, verified results. Preserve required approvals, risk disclosures, and blocker reports. This principle does not expand authorization or override safety and project rules.
